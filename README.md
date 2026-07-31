@@ -6,11 +6,17 @@ Scantap Reviews is a hardware-enabled reputation-management company. Scantap is 
 
 ## Current phase
 
-The project is in launch definition and local design preparation. The founder has confirmed the Cincinnati starting market, roughly $200 month-one budget, 10–30 weekly hours, and three black/white customizable product formats. There is no confirmed production website, dashboard, customer integration, supplier, inventory, payment system, or deployment.
+The project has moved from launch definition into a local design prototype. The founder has confirmed the Cincinnati starting market, roughly $200 month-one budget, 10–30 weekly hours, and three black/white customizable product formats. `Signal Ledger` is the recommended identity direction, but the status remains `DIRECTION PROPOSED` until the founder selects a direction.
 
-The canonical current brief is:
+There is still no confirmed production website, dashboard, customer integration, supplier, inventory, payment system, or deployment. Prototype data is synthetic and the QR graphics are deliberately not scannable.
+
+Current project artifacts:
 
 - [Scantap launch definition — created 2026-07-30, updated 2026-07-31](docs/launch-definition/2026-07-30-scantap-launch-definition.md)
+- [Local design prototype](prototype/index.html)
+- [Design handoff and decision record](docs/design/2026-07-31-scantap-design-handoff.md)
+- [Read-only supplier and pilot-cost comparison](docs/research/2026-07-31-supplier-cost-comparison.md)
+- [Prototype run instructions](prototype/README.md)
 
 ## Repository
 

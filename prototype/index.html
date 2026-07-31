@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en" data-direction="signal-ledger">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Local Scantap design-direction and product-application prototype. Synthetic data only."
+    />
+    <title>Scantap — design prototype</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script src="./app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#prototype-main">Skip to prototype</a>
+
+    <svg class="icon-sprite" aria-hidden="true">
+      <symbol id="icon-overview" viewBox="0 0 24 24">
+        <path d="M4 4h6v6H4zM14 4h6v10h-6zM4 14h6v6H4zM14 18h6v2h-6z" />
+      </symbol>
+      <symbol id="icon-review" viewBox="0 0 24 24">
+        <path d="M5 5h14v11H9l-4 3v-3H5zM8 9h8M8 12h5" />
+      </symbol>
+      <symbol id="icon-signal" viewBox="0 0 24 24">
+        <path d="M6 18a8 8 0 0 1 0-12M9 15a4 4 0 0 1 0-6M13 12h7M17 8l4 4-4 4" />
+      </symbol>
+      <symbol id="icon-device" viewBox="0 0 24 24">
+        <rect x="5" y="3" width="14" height="18" rx="2" />
+        <path d="M9 7h6M9 17h6" />
+      </symbol>
+      <symbol id="icon-report" viewBox="0 0 24 24">
+        <path d="M5 20V9M12 20V4M19 20v-7M3 20h18" />
+      </symbol>
+      <symbol id="icon-settings" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="3" />
+        <path d="M19 12a7 7 0 0 0-.1-1l2-1.5-2-3.4-2.4 1A8 8 0 0 0 15 6l-.3-2.6h-4L10.4 6A8 8 0 0 0 8 7.1l-2.4-1-2 3.4 2 1.5a7 7 0 0 0 0 2l-2 1.5 2 3.4 2.4-1A8 8 0 0 0 10.4 18l.3 2.6h4L15 18a8 8 0 0 0 2-1.1l2.4 1 2-3.4-2-1.5a7 7 0 0 0 .1-1z" />
+      </symbol>
+      <symbol id="icon-check" viewBox="0 0 24 24">
+        <path d="m5 12 4 4L19 6" />
+      </symbol>
+      <symbol id="icon-arrow" viewBox="0 0 24 24">
+        <path d="M5 12h14M14 7l5 5-5 5" />
+      </symbol>
+      <symbol id="icon-menu" viewBox="0 0 24 24">
+        <path d="M4 7h16M4 12h16M4 17h16" />
+      </symbol>
+      <symbol id="icon-close" viewBox="0 0 24 24">
+        <path d="m6 6 12 12M18 6 6 18" />
+      </symbol>
+      <symbol id="icon-clock" viewBox="0 0 24 24">
+        <circle cx="12" cy="12" r="9" />
+        <path d="M12 7v5l3 2" />
+      </symbol>
+      <symbol id="icon-warning" viewBox="0 0 24 24">
+        <path d="M12 3 2.8 20h18.4zM12 9v5M12 17h.01" />
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="5" y="10" width="14" height="10" rx="2" />
+        <path d="M8 10V7a4 4 0 0 1 8 0v3" />
+      </symbol>
+      <symbol id="icon-refresh" viewBox="0 0 24 24">
+        <path d="M20 7v5h-5M4 17v-5h5M18.5 10a7 7 0 0 0-12-3L4 12M5.5 14a7 7 0 0 0 12 3l2.5-5" />
+      </symbol>
+      <symbol id="icon-external" viewBox="0 0 24 24">
+        <path d="M14 5h5v5M10 14l9-9M18 13v6H5V6h6" />
+      </symbol>
+    </svg>
+
+    <header class="studio-header">
+      <div class="studio-brand" aria-label="Scantap prototype studio">
+        <span class="signal-mark" aria-hidden="true">
+          <i></i><i></i><i></i>
+        </span>
+        <span>scantap</span>
+        <span class="studio-label">design study</span>
+      </div>
+
+      <button class="studio-menu-button" type="button" aria-expanded="false" aria-controls="studio-nav">
+        <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+        <span>Explore</span>
+      </button>
+
+      <nav id="studio-nav" class="studio-nav" aria-label="Prototype views" role="tablist">
+        <button class="studio-tab is-active" type="button" role="tab" data-view="directions" aria-controls="view-directions" aria-selected="true">
+          Directions
+        </button>
+        <button class="studio-tab" type="button" role="tab" data-view="products" aria-controls="view-products" aria-selected="false" tabindex="-1">
+          Product faces
+        </button>
+        <button class="studio-tab" type="button" role="tab" data-view="journey" aria-controls="view-journey" aria-selected="false" tabindex="-1">
+          Tap journey
+        </button>
+        <button class="studio-tab" type="button" role="tab" data-view="dashboard" aria-controls="view-dashboard" aria-selected="false" tabindex="-1">
+          Dashboard
+        </button>
+        <button class="studio-tab" type="button" role="tab" data-view="states" aria-controls="view-states" aria-selected="false" tabindex="-1">
+          States
+        </button>
+        <button class="studio-tab" type="button" role="tab" data-view="homepage" aria-controls="view-homepage" aria-selected="false" tabindex="-1">
+          Homepage
+        </button>
+      </nav>
+
+      <div class="prototype-status">
+        <span class="status-dot" aria-hidden="true"></span>
+        Local prototype
+      </div>
+    </header>
+
+    <main id="prototype-main">
+      <section class="prototype-view directions-view" id="view-directions" role="tabpanel" data-view-panel="directions">
+        <div class="view-intro">
+          <p class="eyebrow">Identity exploration · 01</p>
+          <h1>Three ways Scantap could feel.</h1>
+          <p class="intro-copy">
+            Each direction uses the same honest-review contract. The difference is how the product
+            earns trust: operational precision, crafted hospitality, or approachable local service.
+          </p>
+          <div class="decision-banner">
+            <span class="decision-state">Direction proposed</span>
+            <span>Signal Ledger is recommended. Founder selection is still required.</span>
+          </div>
+        </div>
+
+        <div class="direction-grid">
+          <article class="direction-card is-recommended" data-direction-card="signal-ledger">
+            <div class="direction-card-top">
+              <span class="direction-number">A / recommended</span>
+              <span class="direction-mini-mark direction-mini-mark--signal" aria-hidden="true">
+                <i></i><i></i><i></i>
+              </span>
+            </div>
+            <div class="direction-wordmark direction-wordmark--signal">scantap</div>
+            <h2>Signal Ledger</h2>
+            <p>
+              Quietly technical and exact. It treats every tap as an accountable signal moving
+              through a visible system.
+            </p>
+            <div class="swatch-row" aria-label="Signal Ledger colors">
+              <span style="--swatch:#f4f2ec" title="Receipt"></span>
+              <span style="--swatch:#151716" title="Graphite"></span>
+              <span style="--swatch:#2d5bff" title="Signal cobalt"></span>
+              <span style="--swatch:#d7d4ca" title="Counter steel"></span>
+            </div>
+            <dl class="direction-details">
+              <div><dt>Leads with</dt><dd>Operational clarity</dd></div>
+              <div><dt>Signature</dt><dd>Signal rail + evidence nodes</dd></div>
+              <div><dt>Type</dt><dd>Bahnschrift + Segoe UI Variable</dd></div>
+            </dl>
+            <button class="button button--primary direction-preview" type="button" data-set-direction="signal-ledger">
+              Preview this direction
+            </button>
+          </article>
+
+          <article class="direction-card" data-direction-card="copper-circuit">
+            <div class="direction-card-top">
+              <span class="direction-number">B / exploratory</span>
+              <span class="direction-mini-mark direction-mini-mark--copper" aria-hidden="true"></span>
+            </div>
+            <div class="direction-wordmark direction-wordmark--copper">Scantap</div>
+            <h2>Copper Circuit</h2>
+            <p>
+              Crafted and hospitality-led. Physical materials and a warm copper current make the
+              hardware feel like a considered counter object.
+            </p>
+            <div class="swatch-row" aria-label="Copper Circuit colors">
+              <span style="--swatch:#efe7da" title="Oat paper"></span>
+              <span style="--swatch:#171411" title="Roasted graphite"></span>
+              <span style="--swatch:#c86232" title="Copper"></span>
+              <span style="--swatch:#786a5c" title="Walnut"></span>
+            </div>
+            <dl class="direction-details">
+              <div><dt>Leads with</dt><dd>Physical craft</dd></div>
+              <div><dt>Signature</dt><dd>Cut corner + copper trace</dd></div>
+              <div><dt>Type</dt><dd>Georgia + Segoe UI Variable</dd></div>
+            </dl>
+            <button class="button button--secondary direction-preview" type="button" data-set-direction="copper-circuit">
+              Preview this direction
+            </button>
+          </article>
+
+          <article class="direction-card" data-direction-card="civic-current">
+            <div class="direction-card-top">
+              <span class="direction-number">C / exploratory</span>
+              <span class="direction-mini-mark direction-mini-mark--civic" aria-hidden="true">
+                <i></i><i></i>
+              </span>
+            </div>
+            <div class="direction-wordmark direction-wordmark--civic">SCANTAP</div>
+            <h2>Civic Current</h2>
+            <p>
+              Clear and neighborly. A civic green current and broader typography make setup feel
+              approachable for a busy owner.
+            </p>
+            <div class="swatch-row" aria-label="Civic Current colors">
+              <span style="--swatch:#eef5f1" title="Window light"></span>
+              <span style="--swatch:#14201c" title="Park ink"></span>
+              <span style="--swatch:#118663" title="Civic green"></span>
+              <span style="--swatch:#b8d1c5" title="Patina"></span>
+            </div>
+            <dl class="direction-details">
+              <div><dt>Leads with</dt><dd>Local confidence</dd></div>
+              <div><dt>Signature</dt><dd>Current loop + location node</dd></div>
+              <div><dt>Type</dt><dd>Trebuchet MS + Segoe UI Variable</dd></div>
+            </dl>
+            <button class="button button--secondary direction-preview" type="button" data-set-direction="civic-current">
+              Preview this direction
+            </button>
+          </article>
+        </div>
+
+        <section class="system-specimen" aria-labelledby="system-specimen-title">
+          <div>
+            <p class="eyebrow">Recommended specimen</p>
+            <h2 id="system-specimen-title">A system drawn from a real customer moment.</h2>
+          </div>
+          <div class="signal-rail signal-rail--large" aria-label="Product to outcome sequence">
+            <div class="signal-node is-complete">
+              <span>01</span>
+              <strong>Place</strong>
+              <small>stand · plate · card</small>
+            </div>
+            <div class="signal-node is-active">
+              <span>02</span>
+              <strong>Tap</strong>
+              <small>NFC or QR</small>
+            </div>
+            <div class="signal-node">
+              <span>03</span>
+              <strong>Choose</strong>
+              <small>review or support</small>
+            </div>
+            <div class="signal-node">
+              <span>04</span>
+              <strong>Follow through</strong>
+              <small>respond and improve</small>
+            </div>
+          </div>
+          <div class="type-specimen">
+            <div class="display-sample">Signals you can act on.</div>
+            <div class="body-sample">
+              Know which devices are being used, which reviews need a response, and what to do next.
+            </div>
+            <div class="label-sample">DEVICE HEALTH · UPDATED 8 MIN AGO</div>
+          </div>
+        </section>
+      </section>
+
+      <section class="prototype-view products-view" id="view-products" role="tabpanel" data-view-panel="products" hidden>
+        <div class="view-intro view-intro--split">
+          <div>
+            <p class="eyebrow">Physical system · 02</p>
+            <h1>One face system, six launch variants.</h1>
+            <p class="intro-copy">
+              Counter stand, adhesive plate, and staff card share one prompt hierarchy. Black and
+              white are base variants; business customization changes the name, mark, and one
+              approved accent—not the review standard.
+            </p>
+          </div>
+          <form class="product-controls" aria-label="Product-face preview controls" onsubmit="return false">
+            <label for="business-name">Sample business name</label>
+            <input id="business-name" name="business-name" value="Northstar Coffee" maxlength="28" />
+            <fieldset>
+              <legend>Base color</legend>
+              <button class="color-choice is-active" type="button" data-product-color="light" aria-pressed="true">
+                <span class="color-chip color-chip--light"></span>White
+              </button>
+              <button class="color-choice" type="button" data-product-color="dark" aria-pressed="false">
+                <span class="color-chip color-chip--dark"></span>Black
+              </button>
+            </fieldset>
+          </form>
+        </div>
+
+        <div class="product-stage">
+          <article class="product-preview product-preview--stand">
+            <div class="product-caption">
+              <span>P-01</span>
+              <div>
+                <h2>Counter stand</h2>
+                <p>5 × 7-inch pilot insert · replaceable face</p>
+              </div>
+            </div>
+            <div class="stand-object">
+              <div class="product-face product-face--portrait" data-product-face>
+                <div class="face-topline">
+                  <span class="face-brand js-business-name">Northstar Coffee</span>
+                  <span class="face-nfc" aria-hidden="true">)))</span>
+                </div>
+                <div class="face-message">How did we do?</div>
+                <div class="face-action">Tap or scan to share an honest review.</div>
+                <div class="face-bottom">
+                  <div class="qr-placeholder" aria-label="QR position preview; not scannable">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div class="face-signal-line"><span></span><span></span><span></span></div>
+                  <small>powered by scantap</small>
+                </div>
+                <div class="prototype-qr-note">DESIGN PREVIEW · QR NOT SCANNABLE</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-preview product-preview--card">
+            <div class="product-caption">
+              <span>P-02</span>
+              <div>
+                <h2>Staff card</h2>
+                <p>CR80 · mobile service and handoff</p>
+              </div>
+            </div>
+            <div class="card-object">
+              <div class="product-face product-face--landscape" data-product-face>
+                <div class="face-topline">
+                  <span class="face-brand js-business-name">Northstar Coffee</span>
+                  <span class="face-nfc" aria-hidden="true">)))</span>
+                </div>
+                <div class="card-message">
+                  <span>Tap to share</span>
+                  <strong>an honest review.</strong>
+                </div>
+                <div class="face-bottom face-bottom--horizontal">
+                  <div class="qr-placeholder qr-placeholder--small" aria-label="QR position preview; not scannable">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                  <div class="face-signal-line"><span></span><span></span><span></span></div>
+                  <small>scantap</small>
+                </div>
+                <div class="prototype-qr-note">PREVIEW</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-preview product-preview--plate">
+            <div class="product-caption">
+              <span>P-03</span>
+              <div>
+                <h2>Adhesive plate</h2>
+                <p>Card-size pilot substrate · on-metal NFC core</p>
+              </div>
+            </div>
+            <div class="plate-object">
+              <div class="product-face product-face--plate" data-product-face>
+                <div class="face-topline">
+                  <span class="face-brand js-business-name">Northstar Coffee</span>
+                  <span class="face-nfc" aria-hidden="true">)))</span>
+                </div>
+                <div class="plate-content">
+                  <div>
+                    <strong>Tell us<br />how it went.</strong>
+                    <span>Tap or scan</span>
+                  </div>
+                  <div class="qr-placeholder" aria-label="QR position preview; not scannable">
+                    <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+                  </div>
+                </div>
+                <div class="face-signal-line"><span></span><span></span><span></span></div>
+                <div class="prototype-qr-note">DESIGN PREVIEW · QR NOT SCANNABLE</div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="face-rules">
+          <div>
+            <span class="rule-number">01</span>
+            <h3>Prompt before brand flourish</h3>
+            <p>“Honest review” remains readable at arm’s length and never becomes a five-star promise.</p>
+          </div>
+          <div>
+            <span class="rule-number">02</span>
+            <h3>NFC and QR remain peers</h3>
+            <p>The face works when NFC is disabled, unsupported, or awkward to reach.</p>
+          </div>
+          <div>
+            <span class="rule-number">03</span>
+            <h3>Customization stays bounded</h3>
+            <p>Business name, mark, and one accent can change; hierarchy and trust language do not.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="prototype-view journey-view" id="view-journey" role="tabpanel" data-view-panel="journey" hidden>
+        <div class="view-intro">
+          <p class="eyebrow">Public tap journey · 03</p>
+          <h1>No rating question. No hidden branch.</h1>
+          <p class="intro-copy">
+            Review and direct-support choices appear together on the first actionable screen. This
+            prototype simulates the decision only; it does not submit, persist, or open a provider.
+          </p>
+        </div>
+
+        <div class="journey-layout">
+          <div class="phone-shell">
+            <div class="phone-status" aria-hidden="true"><span>9:41</span><i></i></div>
+            <div class="tap-screen" data-journey-screen="landing">
+              <div class="tap-location-mark">
+                <span class="signal-mark signal-mark--small" aria-hidden="true"><i></i><i></i><i></i></span>
+                <span class="js-business-name">Northstar Coffee</span>
+              </div>
+              <div class="tap-screen-body">
+                <p class="eyebrow">Thanks for stopping in</p>
+                <h2>What would you like to do?</h2>
+                <p>Your choice is private to you. Scantap does not ask for a rating first.</p>
+                <div class="tap-actions">
+                  <button class="tap-action" type="button" data-journey-choice="review">
+                    <span class="tap-action-icon" aria-hidden="true">
+                      <svg><use href="#icon-review"></use></svg>
+                    </span>
+                    <span>
+                      <strong>Leave an honest review</strong>
+                      <small>Continue to the business’s public review page</small>
+                    </span>
+                    <svg class="tap-action-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </button>
+                  <button class="tap-action" type="button" data-journey-choice="support">
+                    <span class="tap-action-icon" aria-hidden="true">
+                      <svg><use href="#icon-signal"></use></svg>
+                    </span>
+                    <span>
+                      <strong>Contact the business</strong>
+                      <small>Call, email, or send a direct message</small>
+                    </span>
+                    <svg class="tap-action-arrow" aria-hidden="true"><use href="#icon-arrow"></use></svg>
+                  </button>
+                </div>
+              </div>
+              <div class="tap-trust-note">
+                <svg aria-hidden="true"><use href="#icon-lock"></use></svg>
+                <span>Scantap records the action selected, not a private rating.</span>
+              </div>
+            </div>
+
+            <div class="tap-screen" data-journey-screen="review" hidden>
+              <button class="text-button journey-back" type="button" data-journey-back>
+                <span aria-hidden="true">←</span> Back
+              </button>
+              <div class="tap-screen-body tap-screen-body--branch">
+                <span class="branch-number">Review path</span>
+                <h2>You’re leaving Scantap.</h2>
+                <p>
+                  The next screen would be the public review destination approved by
+                  <span class="js-business-name">Northstar Coffee</span>.
+                </p>
+                <button class="button button--primary button--wide" type="button" data-journey-complete="review">
+                  Continue to review page
+                  <svg aria-hidden="true"><use href="#icon-external"></use></svg>
+                </button>
+                <small class="prototype-limit">Prototype only—no external page will open.</small>
+              </div>
+            </div>
+
+            <div class="tap-screen" data-journey-screen="support" hidden>
+              <button class="text-button journey-back" type="button" data-journey-back>
+                <span aria-hidden="true">←</span> Back
+              </button>
+              <div class="tap-screen-body tap-screen-body--branch">
+                <span class="branch-number">Direct support</span>
+                <h2>Choose a contact method.</h2>
+                <p>
+                  Only contact routes explicitly approved by
+                  <span class="js-business-name">Northstar Coffee</span> appear here.
+                </p>
+                <div class="contact-options">
+                  <button class="button button--secondary button--wide" type="button" data-journey-complete="support">
+                    Call the business
+                  </button>
+                  <button class="button button--secondary button--wide" type="button" data-journey-complete="support">
+                    Send an email
+                  </button>
+                </div>
+                <small class="prototype-limit">Prototype only—no message will be sent.</small>
+              </div>
+            </div>
+
+            <div class="tap-screen" data-journey-screen="complete" hidden>
+              <div class="tap-screen-body tap-screen-body--complete">
+                <span class="complete-mark" aria-hidden="true">
+                  <svg><use href="#icon-check"></use></svg>
+                </span>
+                <p class="eyebrow">Prototype completion</p>
+                <h2>Path understood.</h2>
+                <p id="journey-complete-copy">No submission or provider action occurred.</p>
+                <button class="button button--primary" type="button" data-journey-reset>Return to start</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="journey-contract">
+            <div class="journey-contract-header">
+              <span>Journey contract</span>
+              <strong>Preserved in every state</strong>
+            </div>
+            <ol class="contract-list">
+              <li><span>01</span><div><strong>Equal first-screen access</strong><p>Review and support choices use the same visual weight and interaction cost.</p></div></li>
+              <li><span>02</span><div><strong>No sentiment collection</strong><p>No stars, satisfaction question, or “happy customer” gate precedes the public review link.</p></div></li>
+              <li><span>03</span><div><strong>Honest event language</strong><p>A tap is an interaction; a click is not reported as a completed review.</p></div></li>
+              <li><span>04</span><div><strong>Clear dependency boundary</strong><p>Provider failure produces a truthful recovery state, never a fabricated completion.</p></div></li>
+            </ol>
+            <div class="journey-event-preview">
+              <span>Simulated event model</span>
+              <code>landing → review_click | support_click</code>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="prototype-view dashboard-view" id="view-dashboard" role="tabpanel" data-view-panel="dashboard" hidden>
+        <div class="prototype-notice" role="note">
+          <strong>Synthetic prototype data</strong>
+          <span>No live account, provider connection, persistence, or completed reviews are represented.</span>
+        </div>
+
+        <div class="dashboard-shell" id="dashboard-prototype" data-dashboard-state="active">
+          <aside class="dashboard-sidebar" id="dashboard-primary-nav" aria-label="Dashboard primary navigation">
+            <div class="dashboard-brand">
+              <span class="signal-mark signal-mark--small" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>scantap</span>
+            </div>
+            <nav>
+              <a class="dashboard-nav-item is-current" href="#dashboard-overview">
+                <svg aria-hidden="true"><use href="#icon-overview"></use></svg><span>Overview</span>
+              </a>
+              <a class="dashboard-nav-item" href="#dashboard-reviews">
+                <svg aria-hidden="true"><use href="#icon-review"></use></svg><span>Reviews</span><em>3</em>
+              </a>
+              <a class="dashboard-nav-item" href="#dashboard-interactions">
+                <svg aria-hidden="true"><use href="#icon-signal"></use></svg><span>Interactions</span>
+              </a>
+              <a class="dashboard-nav-item" href="#dashboard-devices">
+                <svg aria-hidden="true"><use href="#icon-device"></use></svg><span>Devices & locations</span>
+              </a>
+              <a class="dashboard-nav-item" href="#dashboard-reports">
+                <svg aria-hidden="true"><use href="#icon-report"></use></svg><span>Reports</span>
+              </a>
+            </nav>
+            <div class="dashboard-sidebar-bottom">
+              <a class="dashboard-nav-item" href="#dashboard-settings">
+                <svg aria-hidden="true"><use href="#icon-settings"></use></svg><span>Settings</span>
+              </a>
+              <div class="account-chip">
+                <span>NC</span>
+                <div><strong>Northstar Coffee</strong><small>Demo location</small></div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="dashboard-main">
+            <header class="dashboard-topbar">
+              <button class="dashboard-mobile-menu" type="button" aria-label="Open dashboard navigation" aria-controls="dashboard-primary-nav" aria-expanded="false">
+                <svg aria-hidden="true"><use href="#icon-menu"></use></svg>
+              </button>
+              <div>
+                <p class="dashboard-kicker">Wednesday, July 31</p>
+                <h1>Good morning, Maya.</h1>
+              </div>
+              <div class="dashboard-topbar-actions">
+                <label class="date-control">
+                  <span class="sr-only">Reporting range</span>
+                  <select>
+                    <option>Last 30 days</option>
+                    <option>Last 7 days</option>
+                    <option>This quarter</option>
+                  </select>
+                </label>
+                <button class="icon-button" type="button" aria-label="Open notifications">
+                  <span class="notification-dot"></span>
+                  <svg aria-hidden="true"><use href="#icon-warning"></use></svg>
+                </button>
+              </div>
+            </header>
+
+            <div class="dashboard-content" id="dashboard-overview">
+              <div class="dashboard-state-switcher" aria-label="Preview dashboard state">
+                <span>Preview state</span>
+                <button type="button" class="is-active" data-set-dashboard-state="active" aria-pressed="true">Active</button>
+                <button type="button" data-set-dashboard-state="setup" aria-pressed="false">Setup</button>
+                <button type="button" data-set-dashboard-state="empty" aria-pressed="false">Empty</button>
+                <button type="button" data-set-dashboard-state="loading" aria-pressed="false">Loading</button>
+                <button type="button" data-set-dashboard-state="stale" aria-pressed="false">Stale</button>
+                <button type="button" data-set-dashboard-state="error" aria-pressed="false">Error</button>
+                <button type="button" data-set-dashboard-state="permission" aria-pressed="false">Permission</button>
+              </div>
+
+              <section class="setup-panel" aria-labelledby="setup-panel-title">
+                <div class="setup-copy">
+                  <span class="setup-count">3 of 5 complete</span>
+                  <h2 id="setup-panel-title">Finish setting up Northstar Coffee</h2>
+                  <p>Complete the next two steps before relying on interaction reporting.</p>
+                </div>
+                <div class="setup-steps">
+                  <button class="setup-step is-complete" type="button">
+                    <span><svg aria-hidden="true"><use href="#icon-check"></use></svg></span>
+                    <span><strong>Review destination</strong><small>Connected</small></span>
+                  </button>
+                  <button class="setup-step is-complete" type="button">
+                    <span><svg aria-hidden="true"><use href="#icon-check"></use></svg></span>
+                    <span><strong>Support route</strong><small>Confirmed</small></span>
+                  </button>
+                  <button class="setup-step is-active" type="button">
+                    <span>4</span>
+                    <span><strong>Place the counter stand</strong><small>5-minute task</small></span>
+                  </button>
+                </div>
+              </section>
+
+              <div class="dashboard-live-content">
+                <section class="metrics-layout" aria-label="Account performance summary">
+                  <article class="metric-feature">
+                    <div class="metric-heading">
+                      <div>
+                        <span class="metric-label">Review momentum</span>
+                        <strong>14</strong>
+                        <span class="metric-unit">new provider reviews</span>
+                      </div>
+                      <span class="metric-change metric-change--positive">+4 vs prior period</span>
+                    </div>
+                    <div class="signal-chart" role="img" aria-label="Synthetic thirty-day trend showing review activity increasing">
+                      <svg viewBox="0 0 620 168" preserveAspectRatio="none">
+                        <defs>
+                          <linearGradient id="chart-fill" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="var(--signal)" stop-opacity=".18" />
+                            <stop offset="100%" stop-color="var(--signal)" stop-opacity="0" />
+                          </linearGradient>
+                        </defs>
+                        <path class="chart-grid" d="M0 32H620M0 84H620M0 136H620" />
+                        <path class="chart-area" d="M0 142 C40 134 55 138 90 124 S150 121 180 109 S244 116 276 91 S334 94 365 80 S430 73 456 55 S522 67 548 44 S592 34 620 20 V168 H0 Z" />
+                        <path class="chart-line" d="M0 142 C40 134 55 138 90 124 S150 121 180 109 S244 116 276 91 S334 94 365 80 S430 73 456 55 S522 67 548 44 S592 34 620 20" />
+                        <circle class="chart-point" cx="620" cy="20" r="5" />
+                      </svg>
+                    </div>
+                    <div class="chart-axis"><span>Jul 2</span><span>Jul 16</span><span>Jul 31</span></div>
+                  </article>
+
+                  <div class="metric-stack">
+                    <article class="metric-row">
+                      <div><span class="metric-label">Interactions</span><strong>186</strong></div>
+                      <div><span class="metric-change metric-change--positive">+18%</span><small>NFC 61% · QR 39%</small></div>
+                    </article>
+                    <article class="metric-row">
+                      <div><span class="metric-label">Review-link opens</span><strong>121</strong></div>
+                      <div><span class="metric-change">65%</span><small>of landing sessions</small></div>
+                    </article>
+                    <article class="metric-row">
+                      <div><span class="metric-label">Response coverage</span><strong>86%</strong></div>
+                      <div><span class="metric-change metric-change--warning">2 due</span><small>within 48-hour goal</small></div>
+                    </article>
+                  </div>
+                </section>
+
+                <section class="dashboard-work-grid">
+                  <article class="work-panel" id="dashboard-reviews">
+                    <header class="panel-header">
+                      <div><span class="panel-kicker">Action queue</span><h2>Reviews needing attention</h2></div>
+                      <button class="text-button" type="button">View all <span aria-hidden="true">→</span></button>
+                    </header>
+                    <div class="review-queue">
+                      <button class="review-row" type="button">
+                        <span class="review-rating" aria-label="Rating 3 out of 5"><strong>3.0</strong><small>Google</small></span>
+                        <span class="review-copy"><strong>Review #1042</strong><small>“Service was kind, but the wait was longer than expected…”</small></span>
+                        <span class="review-meta"><strong>Draft ready</strong><small>8 min ago</small></span>
+                      </button>
+                      <button class="review-row" type="button">
+                        <span class="review-rating" aria-label="Rating 5 out of 5"><strong>5.0</strong><small>Google</small></span>
+                        <span class="review-copy"><strong>Review #1041</strong><small>“The team remembered my order and made the morning easy.”</small></span>
+                        <span class="review-meta"><strong>Unassigned</strong><small>2 hr ago</small></span>
+                      </button>
+                      <button class="review-row" type="button">
+                        <span class="review-rating" aria-label="Rating 4 out of 5"><strong>4.0</strong><small>Google</small></span>
+                        <span class="review-copy"><strong>Review #1038</strong><small>“Good coffee and a calm place to work.”</small></span>
+                        <span class="review-meta"><strong>Reply due</strong><small>Yesterday</small></span>
+                      </button>
+                    </div>
+                  </article>
+
+                  <article class="work-panel" id="dashboard-devices">
+                    <header class="panel-header">
+                      <div><span class="panel-kicker">Placement</span><h2>Device health</h2></div>
+                      <button class="icon-button icon-button--small" type="button" aria-label="Refresh device status">
+                        <svg aria-hidden="true"><use href="#icon-refresh"></use></svg>
+                      </button>
+                    </header>
+                    <div class="device-summary">
+                      <div class="device-score"><strong>3</strong><span>of 3 active</span></div>
+                      <div class="device-rail" aria-hidden="true"><i></i><i></i><i></i></div>
+                    </div>
+                    <ul class="device-list">
+                      <li><span class="device-status is-online"></span><div><strong>Counter stand</strong><small>Front register · 8 min ago</small></div><em>92</em></li>
+                      <li><span class="device-status is-online"></span><div><strong>Staff card</strong><small>Shift lead · 24 min ago</small></div><em>61</em></li>
+                      <li><span class="device-status is-watch"></span><div><strong>Adhesive plate</strong><small>Pickup shelf · yesterday</small></div><em>33</em></li>
+                    </ul>
+                  </article>
+                </section>
+
+                <footer class="dashboard-freshness">
+                  <svg aria-hidden="true"><use href="#icon-clock"></use></svg>
+                  <span>Provider data last checked 8 minutes ago · Interaction events current through 10:42 AM</span>
+                </footer>
+              </div>
+
+              <section class="dashboard-state-panel" data-dashboard-panel="empty" hidden>
+                <span class="state-illustration state-illustration--empty" aria-hidden="true"><i></i><i></i><i></i></span>
+                <p class="eyebrow">No interaction data yet</p>
+                <h2>Place one device to begin.</h2>
+                <p>Once a customer taps or scans, interactions will appear here without being counted as completed reviews.</p>
+                <button class="button button--primary" type="button">Open placement guide</button>
+              </section>
+
+              <section class="dashboard-state-panel" data-dashboard-panel="loading" hidden aria-live="polite">
+                <span class="loading-orbit" aria-hidden="true"><i></i></span>
+                <p class="eyebrow">Refreshing sources</p>
+                <h2>Checking devices and provider data…</h2>
+                <p>You can keep working. This view will update without replacing the last confirmed values.</p>
+                <div class="skeleton-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+              </section>
+
+              <section class="dashboard-state-panel dashboard-state-panel--left" data-dashboard-panel="stale" hidden>
+                <span class="state-icon state-icon--warning" aria-hidden="true"><svg><use href="#icon-clock"></use></svg></span>
+                <p class="eyebrow">Provider data delayed</p>
+                <h2>Reviews were last confirmed 7 hours ago.</h2>
+                <p>Interaction events remain current. Review counts and response coverage show the last confirmed values and are not displayed as zero.</p>
+                <div class="state-actions"><button class="button button--primary" type="button">Retry provider</button><button class="button button--secondary" type="button">View source status</button></div>
+              </section>
+
+              <section class="dashboard-state-panel dashboard-state-panel--left" data-dashboard-panel="error" hidden>
+                <span class="state-icon state-icon--critical" aria-hidden="true"><svg><use href="#icon-warning"></use></svg></span>
+                <p class="eyebrow">Sync failed</p>
+                <h2>We could not refresh the review source.</h2>
+                <p>Your last confirmed data is preserved. No review or response action was lost.</p>
+                <div class="state-actions"><button class="button button--primary" type="button">Try again</button><button class="button button--secondary" type="button">Contact Scantap</button></div>
+                <code class="error-code">SOURCE_AUTH_EXPIRED · 10:51 AM</code>
+              </section>
+
+              <section class="dashboard-state-panel" data-dashboard-panel="permission" hidden>
+                <span class="state-icon" aria-hidden="true"><svg><use href="#icon-lock"></use></svg></span>
+                <p class="eyebrow">Manager access required</p>
+                <h2>You can view performance, but not publish replies.</h2>
+                <p>Ask an account owner to approve this action or change your role. Your current work remains saved as a draft in the production contract.</p>
+                <button class="button button--primary" type="button">Request access</button>
+              </section>
+            </div>
+
+            <nav class="dashboard-mobile-nav" aria-label="Mobile dashboard navigation">
+              <a class="is-current" href="#dashboard-overview"><svg aria-hidden="true"><use href="#icon-overview"></use></svg><span>Overview</span></a>
+              <a href="#dashboard-reviews"><svg aria-hidden="true"><use href="#icon-review"></use></svg><span>Reviews</span></a>
+              <a href="#dashboard-devices"><svg aria-hidden="true"><use href="#icon-device"></use></svg><span>Devices</span></a>
+              <a href="#dashboard-settings"><svg aria-hidden="true"><use href="#icon-settings"></use></svg><span>Settings</span></a>
+            </nav>
+          </div>
+        </div>
+      </section>
+
+      <section class="prototype-view states-view" id="view-states" role="tabpanel" data-view-panel="states" hidden>
+        <div class="view-intro">
+          <p class="eyebrow">System behavior · 05</p>
+          <h1>Every state says what happened and what comes next.</h1>
+          <p class="intro-copy">
+            These are state contracts, not decoration. Unknown, empty, delayed, failed, and
+            permission-limited data remain different concepts.
+          </p>
+        </div>
+
+        <div class="state-gallery">
+          <article class="state-specimen">
+            <span class="state-tag">Empty</span>
+            <div class="mini-state mini-state--empty">
+              <span class="state-illustration state-illustration--empty" aria-hidden="true"><i></i><i></i><i></i></span>
+              <h2>No interactions yet</h2>
+              <p>Place one device to begin collecting interaction events.</p>
+              <button class="button button--primary" type="button">Placement guide</button>
+            </div>
+            <p class="state-rule">Never replaces unknown provider data with zero.</p>
+          </article>
+
+          <article class="state-specimen">
+            <span class="state-tag">Loading</span>
+            <div class="mini-state">
+              <span class="loading-orbit" aria-hidden="true"><i></i></span>
+              <h2>Refreshing sources…</h2>
+              <div class="skeleton-stack" aria-hidden="true"><i></i><i></i><i></i></div>
+            </div>
+            <p class="state-rule">Preserves last-known data while asynchronous work continues.</p>
+          </article>
+
+          <article class="state-specimen">
+            <span class="state-tag">Stale</span>
+            <div class="mini-state mini-state--left">
+              <span class="state-icon state-icon--warning" aria-hidden="true"><svg><use href="#icon-clock"></use></svg></span>
+              <h2>Last confirmed 7 hours ago</h2>
+              <p>Review counts retain source and timestamp.</p>
+              <button class="button button--secondary" type="button">Retry</button>
+            </div>
+            <p class="state-rule">Uses time, source, and text—not amber color alone.</p>
+          </article>
+
+          <article class="state-specimen">
+            <span class="state-tag">Error</span>
+            <div class="mini-state mini-state--left">
+              <span class="state-icon state-icon--critical" aria-hidden="true"><svg><use href="#icon-warning"></use></svg></span>
+              <h2>Source refresh failed</h2>
+              <p>Last-confirmed data is preserved; no action is fabricated.</p>
+              <button class="button button--primary" type="button">Try again</button>
+            </div>
+            <p class="state-rule">Names the failed dependency and offers a bounded recovery.</p>
+          </article>
+
+          <article class="state-specimen">
+            <span class="state-tag">Success</span>
+            <div class="mini-state mini-state--left">
+              <span class="state-icon state-icon--success" aria-hidden="true"><svg><use href="#icon-check"></use></svg></span>
+              <h2>Destination updated</h2>
+              <p>All three devices now resolve to the accepted version.</p>
+              <button class="button button--secondary" type="button">View history</button>
+            </div>
+            <p class="state-rule">Confirms the exact object changed and preserves audit history.</p>
+          </article>
+
+          <article class="state-specimen">
+            <span class="state-tag">Permission denied</span>
+            <div class="mini-state">
+              <span class="state-icon" aria-hidden="true"><svg><use href="#icon-lock"></use></svg></span>
+              <h2>Owner approval required</h2>
+              <p>Your draft is preserved; publishing remains protected.</p>
+              <button class="button button--primary" type="button">Request access</button>
+            </div>
+            <p class="state-rule">Explains what remains allowed and what role can resolve it.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="prototype-view homepage-view" id="view-homepage" role="tabpanel" data-view-panel="homepage" hidden>
+        <div class="wireframe-label">
+          <span>Marketing structure prototype</span>
+          <strong>Internal pilot copy · no public claims</strong>
+        </div>
+
+        <div class="home-prototype">
+          <header class="home-nav">
+            <a class="home-brand" href="#home-hero" aria-label="Scantap home">
+              <span class="signal-mark signal-mark--small" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>scantap</span>
+            </a>
+            <nav aria-label="Homepage preview navigation">
+              <a href="#home-products">Products</a>
+              <a href="#home-dashboard">Dashboard</a>
+              <a href="#home-standard">Our standard</a>
+            </nav>
+            <a class="button button--primary" href="#home-pilot">Explore the pilot</a>
+          </header>
+
+          <section class="home-hero" id="home-hero">
+            <div class="home-hero-copy">
+              <p class="eyebrow">Reviews & reputation systems</p>
+              <h1>Turn a real customer moment into an honest review.</h1>
+              <p>
+                Thoughtful NFC products meet a dashboard that shows what was used, what needs a
+                response, and what to do next.
+              </p>
+              <div class="hero-actions">
+                <a class="button button--primary" href="#home-products">See the three formats</a>
+                <a class="button button--secondary" href="#home-dashboard">Preview the dashboard</a>
+              </div>
+              <div class="hero-standard">
+                <span><svg aria-hidden="true"><use href="#icon-check"></use></svg>Honest-review language</span>
+                <span><svg aria-hidden="true"><use href="#icon-check"></use></svg>No rating gate</span>
+                <span><svg aria-hidden="true"><use href="#icon-check"></use></svg>NFC + QR</span>
+              </div>
+            </div>
+            <div class="home-hero-visual" aria-label="Counter stand connecting to dashboard preview">
+              <div class="hero-product">
+                <div class="mini-face">
+                  <span>Northstar Coffee</span>
+                  <strong>How did<br />we do?</strong>
+                  <small>Tap or scan to share an honest review.</small>
+                  <div class="mini-qr"></div>
+                </div>
+              </div>
+              <div class="hero-signal-path" aria-hidden="true"><i></i><i></i><i></i></div>
+              <div class="hero-dashboard-card">
+                <div class="hero-dashboard-top"><span>Overview</span><em>Last 30 days</em></div>
+                <div class="hero-dashboard-value"><span>Review momentum</span><strong>14</strong><small>synthetic</small></div>
+                <svg viewBox="0 0 280 86" preserveAspectRatio="none" aria-hidden="true">
+                  <path d="M0 76 C35 70 45 71 72 61 S120 60 145 42 S190 46 214 29 S254 24 280 10" />
+                </svg>
+              </div>
+            </div>
+          </section>
+
+          <section class="home-proof-strip" aria-label="Scantap offer sequence">
+            <span>Product</span><i></i><span>Dashboard</span><i></i><span>Managed</span><i></i><span>Multi-location</span>
+          </section>
+
+          <section class="home-products" id="home-products">
+            <header class="home-section-heading">
+              <p class="eyebrow">Three customer moments</p>
+              <h2>Choose the format by where the conversation happens.</h2>
+            </header>
+            <div class="home-product-grid">
+              <article>
+                <span class="product-context">At the counter</span>
+                <div class="home-product-shape home-product-shape--stand"><i></i></div>
+                <h3>Counter stand</h3>
+                <p>Visible at checkout, reception, or a waiting area.</p>
+                <a href="#home-pilot">Explore stand <span aria-hidden="true">→</span></a>
+              </article>
+              <article>
+                <span class="product-context">In the handoff</span>
+                <div class="home-product-shape home-product-shape--card"><i></i></div>
+                <h3>Staff card</h3>
+                <p>Portable for appointments, tableside service, and mobile work.</p>
+                <a href="#home-pilot">Explore card <span aria-hidden="true">→</span></a>
+              </article>
+              <article>
+                <span class="product-context">Where people pause</span>
+                <div class="home-product-shape home-product-shape--plate"><i></i></div>
+                <h3>Adhesive plate</h3>
+                <p>A fixed prompt for pickup areas, mirrors, doors, and equipment.</p>
+                <a href="#home-pilot">Explore plate <span aria-hidden="true">→</span></a>
+              </article>
+            </div>
+          </section>
+
+          <section class="home-dashboard-story" id="home-dashboard">
+            <div class="home-dashboard-copy">
+              <p class="eyebrow">A useful dashboard, not a vanity wall</p>
+              <h2>Know what deserves attention today.</h2>
+              <p>
+                Finish setup, see device health, separate interactions from reviews, and keep
+                response work accountable.
+              </p>
+              <ul>
+                <li><svg aria-hidden="true"><use href="#icon-check"></use></svg>Setup tasks before empty analytics</li>
+                <li><svg aria-hidden="true"><use href="#icon-check"></use></svg>Source and freshness beside provider data</li>
+                <li><svg aria-hidden="true"><use href="#icon-check"></use></svg>Review response queue with clear ownership</li>
+              </ul>
+            </div>
+            <div class="home-dashboard-window">
+              <div class="window-rail"><i></i><i></i><i></i></div>
+              <div class="window-content">
+                <span>Good morning, Maya.</span>
+                <div class="window-setup"><strong>Finish setup</strong><em>3 of 5</em></div>
+                <div class="window-metrics"><div><small>Interactions</small><strong>186</strong></div><div><small>Review opens</small><strong>121</strong></div><div><small>Coverage</small><strong>86%</strong></div></div>
+                <div class="window-chart"><i></i></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="home-standard" id="home-standard">
+            <div>
+              <p class="eyebrow">The Scantap standard</p>
+              <h2>The review path stays available—whatever the customer felt.</h2>
+            </div>
+            <div class="standard-choices">
+              <div><svg aria-hidden="true"><use href="#icon-review"></use></svg><strong>Leave an honest review</strong><span>Public destination</span></div>
+              <span class="choice-equals">and</span>
+              <div><svg aria-hidden="true"><use href="#icon-signal"></use></svg><strong>Contact the business</strong><span>Direct support</span></div>
+            </div>
+          </section>
+
+          <section class="home-pilot" id="home-pilot">
+            <div>
+              <p class="eyebrow">Cincinnati founder pilot</p>
+              <h2>Start with one real customer moment.</h2>
+              <p>
+                Pilot structure, eligibility, and prices remain internal until samples, cost, and
+                payment readiness pass.
+              </p>
+            </div>
+            <button class="button button--inverted" type="button">Request pilot details</button>
+          </section>
+
+          <footer class="home-footer">
+            <div class="home-brand">
+              <span class="signal-mark signal-mark--small" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span>scantap</span>
+            </div>
+            <span>Prototype structure · not a deployed website</span>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <div class="prototype-footer">
+      <span>Scantap design prototype · 2026-07-31</span>
+      <span id="active-direction-label">Previewing Signal Ledger</span>
+    </div>
+  </body>
+</html>

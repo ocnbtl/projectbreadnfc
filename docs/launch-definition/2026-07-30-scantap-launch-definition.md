@@ -2,7 +2,7 @@
 
 - Created: 2026-07-30
 - Last updated: 2026-07-31
-- Status: decision-ready v0.2; founder inputs incorporated; proposed economics remain to be tested
+- Status: design-ready v0.3; local prototype and supplier listing evidence incorporated; founder selection and economics remain to be tested
 - Decision owner: Founder
 - Canonical public name: Scantap Reviews
 - Normal shorthand: Scantap
@@ -14,7 +14,7 @@
 - **Why now:** The founder has supplied the launch geography, budget, capacity, SKU targets, visual references, and dashboard preference. The remaining work is no longer broad discovery; it is to prove landed cost, fulfillment, product reliability, willingness to pay, and the operator time behind the dashboard and managed tier.
 - **Decisive evidence:** The founder has locked the three launch formats, black/white defaults, customization availability, Cincinnati starting market, roughly $200 first-month budget, 10–30 weekly hours, and a clean, professional, useful dashboard direction led by GetTap. Current competitor prices establish a practical market band but do not prove Scantap margins or demand.
 - **Material uncertainty:** Supplier and landed costs, exact materials and dimensions, payment/tax workflow, brand identity, live dashboard data access, managed-service labor, and the scope that fits the three-business-day target remain unknown.
-- **Immediate owner action:** Preserve the proposed offer and exclusions in section 12 as the working pilot default, then source and test samples before publishing prices. Product specifications, identity exploration, dashboard wireframes, and local fixtures can proceed now.
+- **Immediate owner action:** Select one of the three proposed identity directions, then source and test the sample-first basket before publishing prices. Signal Ledger is recommended; the local product, journey, dashboard, state, and homepage prototype is ready for founder review.
 
 ## 2. Mode, scope, authority, and decision owner
 
@@ -28,7 +28,7 @@
 - **Contributors / consulted owners:** Scantap product and operations; Sunderdas for identity work beyond templates; Madagin for later public-site implementation or deep web integration; Profosi for later campaigns and distribution; Callirus for later voice-signal integration; Unigentamos for portfolio governance.
 - **Deadline / decision window:** The first-month pilot should begin only after sample, cost, policy, and payment readiness gates pass. No calendar launch date is yet confirmed.
 - **Material constraints:** Founder is based in Cincinnati, Ohio, has roughly `$200` available for month one, and expects `10–30 hours/week` of personal capacity. Low starting overhead does not prove scalable custom margins. Public review access cannot depend on sentiment. The customer must not need to understand the wider portfolio.
-- **Checks not run:** No supplier quotes, samples, live NFC encoding, payment/tax setup, domain/handle/trademark clearance, production Google account, OAuth flow, live customer data, deployed site, or runtime app was inspected. The linked Figma page structure was inspected, but it was not treated as an approved identity system.
+- **Checks not run:** No supplier quote or contact, physical sample, live NFC encoding, payment/tax setup, domain/handle/trademark clearance, production Google account, OAuth flow, live customer data, deployed site, or production runtime was inspected. Public supplier listings and the local static design prototype were inspected; neither proves landed cost or production behavior.
 
 ## 3. Current-state findings
 
@@ -36,7 +36,7 @@ Observation dates: 2026-07-30 through 2026-07-31.
 
 | Domain | Current finding | Confidence | Evidence | Limitation |
 |---|---|---|---|---|
-| Local repository/worktree | Canonical workspace is `C:\Users\Ocean\Documents\Project Breadnfc`, aligned to branch `main` with the verified `origin` remote; it began this sprint with no commits | `CONFIRMED` | Local Git inspection and configuration in this session | This document and README form the intended first local baseline; inspect Git for the current local HEAD; no application exists |
+| Local repository/worktree | Canonical workspace is `C:\Users\Ocean\Documents\Project Breadnfc`, aligned to branch `main` with the verified `origin` remote; it now contains the launch brief, supplier comparison, and static design prototype | `CONFIRMED` | Local Git inspection, local prototype, and browser QA in this session | Inspect Git for the current local HEAD; the prototype is not a production application |
 | Remote | `ocnbtl/projectbreadnfc`, repository ID `1317840003`, is public, size `0`, default branch `main`, and returns `409 Git Repository is empty` for commit listing | `CONFIRMED` | GitHub repository metadata and commit query, 2026-07-30 | No remote branch ref or commit exists |
 | Provider/deployment | No provider or deployment is confirmed | `UNKNOWN / NOT CONFIRMED` | No deployment evidence in the repository or continuation evidence | Absence was not tested across every provider account |
 | Live behavior | No website, dashboard, redirect service, NFC product, or integration was run | `UNKNOWN / NOT CONFIRMED` | Checks not run | No runtime exists in the inspected scope |
@@ -58,7 +58,7 @@ Observation dates: 2026-07-30 through 2026-07-31.
 | 5 | Figma file `Sunderdas Company Foundation`, node `20:3` | Current visual-planning evidence | Existing Scantap strategy-board content | Inspected 2026-07-30 | Live file metadata | Not an approved identity, UI, or implementation |
 | 6 | Current Google Business Profile/Maps documentation and FTC guidance | External authoritative | Review solicitation, access, API prerequisites, review data, incentives, and suppression risk | Inspected 2026-07-30 | Platform owner and U.S. regulator | Not legal advice; applicability is fact-specific |
 | 7 | Founder-supplied competitor and design-reference sites | External reference | Current merchandising, price-band, dashboard, motion, and component-pattern hypotheses | Inspected 2026-07-31 | First-party sites and public libraries | Their claims and designs are not accepted as Scantap evidence or copied |
-| 8 | This document’s provisional assumptions | Assumption | Reversible pilot defaults | 2026-07-31 v0.2 | Planning convenience only | Cannot support public claims or irreversible spend |
+| 8 | This document’s provisional assumptions | Assumption | Reversible pilot defaults | 2026-07-31 v0.3 | Planning convenience only | Cannot support public claims or irreversible spend |
 
 **Conflict rule:** Founder intent governs desired product behavior; inspected local and provider evidence governs current technical state; official platform and legal sources govern their respective constraints. Material conflicts remain visible until the appropriate owner or evidence resolves them.
 
@@ -80,6 +80,8 @@ Observation dates: 2026-07-30 through 2026-07-31.
 | `E-10` | Current comparable hardware spans roughly `$15.95–$44.95` for standard/custom cards, plates, and stands on Tap Tag; Digifeel lists `$29.90` cards and `$39.90` plates | First-party public product pages inspected 2026-07-31 | `CONFIRMED` | Observed current list/sale prices | Promotions change; products and included software differ | Use as a hypothesis band, not a margin model | Recheck at pricing publication and compare landed Scantap cost |
 | `E-11` | Tap Tag lists a free tier and a `$19/month` Review+ tier; Review Monkey markets no-contract software and white-glove onboarding but does not expose plan prices in crawlable text | First-party pricing/features pages inspected 2026-07-31 | `CONFIRMED` | Adjacent software offers | Feature scope is not equivalent to Scantap | A low optional monthly tier is plausible, not yet validated | Test willingness to pay and operator load |
 | `E-12` | GetTap’s public dashboard presentation prioritizes setup tasks, a restrained navigation shell, date-filtered performance, active members, and top performers | Live visual/DOM inspection, 2026-07-31 | `CONFIRMED` | Public marketing screenshot only | It is a lead/team product, not a reputation dashboard | Borrow hierarchy and setup-first logic, not its metrics or styling | Validate Scantap-specific wireframes with business owners |
+| `E-13` | A modular sample path can cover both card colors, on-metal NFC cores, one stand body, inserts, and adhesive without a 500-unit custom minimum | Public supplier listings and [supplier comparison](../research/2026-07-31-supplier-cost-comparison.md), 2026-07-31 | `CONFIRMED AS LISTING EVIDENCE` | Read-only sample arithmetic | Shipping, tax, FX, stock, quality, and labor remain unknown | Prefer one sample-first basket after explicit spend approval | Verify checkout totals and physically test every material stack |
+| `E-14` | Three identity directions and responsive product, journey, dashboard, state, and homepage views now exist locally | [Design handoff](../design/2026-07-31-scantap-design-handoff.md) and browser evidence, 2026-07-31 | `CONFIRMED LOCALLY` | Static design prototype | Founder approval and production integration remain absent | Move from open exploration to founder direction selection | Founder selects A, B, or C and records approval |
 
 ### Contradictions
 
@@ -478,7 +480,7 @@ Integrity rules:
 | `D-10` | Market position | `PROPOSED` | Accessible and transparent for owner-operated businesses, not cheapest-at-all-costs | Founder | Competitor price bands plus recurring-service ambition | Before public copy | Field objections, margins, or conversion evidence |
 | `D-11` | Pilot pricing | `PROPOSED` | `$19/$29/$39` standard hardware; `$69` standard trio; `$9/month` Essentials; `$49/month` Managed Lite, with cost/time gates | Founder | Current first-party market anchors and small-business goal | After sample costs | Landed cost, payment fees, labor, or demand fails thresholds |
 | `D-12` | Pilot eligibility | `PROPOSED` | Local, owner-accessible, one-to-two-location businesses with genuine customer moments; exclude risky, regulated, multi-location, rush, and bespoke scope | Founder | Budget, capacity, measurement, and trust guardrails | Before outreach | Founder accepts or edits exclusions |
-| `D-13` | Brand identity | `OPEN` | No existing identity; explore original restrained directions before high fidelity | Founder/design owner | Founder confirmation and reference audit | Before visual freeze | One direction is accepted and cleared |
+| `D-13` | Brand identity | `PROPOSED` | Signal Ledger recommended; Copper Circuit and Civic Current remain alternatives | Founder/design owner | [Local design prototype](../../prototype/index.html), design handoff, and browser QA | Before visual freeze | Founder selects one direction; later clearance evidence can still reopen the choice |
 
 ### Remaining decision checkpoints
 
@@ -538,7 +540,7 @@ The founder’s latest answers unblock local design and pilot preparation. These
 |---:|---|---|---|---|---|---|---|
 | 0 | Targeted evidence still required | Inventory any prior work; obtain supplier/cost/sample evidence when outreach/spend is approved; verify domain/name and final policy risks | Remaining checkpoints and current sources | Read-only until outreach/spend approval | Founder + discovery owner | Updated economics and readiness ledger | Stop before outreach, purchase, or legal conclusion |
 | 1 | Decisions required | Accept prices, eligibility, cost floors, payment process, and readiness gates | Phase 0 evidence | Founder decision | Founder | Accepted `D-11` and `D-12` | Escalate if economics, compliance, or promise changes materially |
-| 2 | Design work | Identity directions, product spec, neutral destination prototype, website direction/wireframes, dashboard/customer and ops prototypes, pilot kit | This v0.2 brief and supplied references | Local design authority | `product-design-and-prototype` recommended | Approved prototypes and usability evidence | Do not invent customer proof, product photography, or claims |
+| 2 | Design work | Local identity directions, product faces, neutral destination journey, dashboard states, and homepage structure are implemented; founder selection remains | This v0.3 brief and supplied references | Local design authority | `product-design-and-prototype` applied | [Design handoff](../design/2026-07-31-scantap-design-handoff.md), prototype, and browser evidence | Do not treat the recommended direction as approved or invent customer proof, photography, or claims |
 | 3 | Implementation work | Local redirect/device registry, fixture dashboard, local site, tracker, and tests | Settled design and requirements | Local implementation authority only | `production-build-and-integration` recommended later | Local build and automated/manual checks | Stop before production credentials, push, or deploy |
 | 4 | Release verification | Formal sample/pilot readiness decision | Candidate samples, local product, terms, pricing, privacy/compliance review | Founder release authority | `production-launch-gate` recommended later | Go/no-go record and evidence | No field launch with failed critical criteria |
 | 5 | Operational follow-up | Controlled 30-day pilot and evidence-led next decision | Approved launch, samples, tracker, founder capacity | Founder-led external authority | Founder + later operations owner | Cohort, unit-economics, time, quality, and support results | Pause on compliance, quality, economics, or capacity failure |
@@ -561,14 +563,14 @@ Provisional sampling target: 32 qualified visits, roughly balanced across the th
 
 | Canonical owner | Needed next? | Availability | Availability evidence | Relationship | Bounded fallback or blocker |
 |---|---|---|---|---|---|
-| `product-design-and-prototype` (S02) | Yes; founder references and priority constraints are now supplied | `AVAILABLE` | Present in the current runtime skill catalog | `RECOMMENDED ONLY` | Begin original identity directions, product specifications, destination flow, and dashboard wireframes |
+| `product-design-and-prototype` (S02) | Yes; local design work is complete enough for founder selection and revision | `AVAILABLE` | Present in the current runtime skill catalog | `APPLIED IN THIS TASK` | Review the three directions, refine the selected system, and freeze it only after founder approval |
 | `production-build-and-integration` (S03) | Later, after the pilot brief and prototypes are accepted | `AVAILABLE` | Present in the current runtime skill catalog | `RECOMMENDED ONLY` | Do not begin production coupling or deployment from this provisional brief |
 | `production-launch-gate` (S04) | Later, before external pilot launch | `AVAILABLE` | Present in the current runtime skill catalog | `RECOMMENDED ONLY` | Founder must approve release authority |
 | `post-launch-operations` (S05) | Later, once a live pilot exists | `AVAILABLE` | Present in the current runtime skill catalog | `RECOMMENDED ONLY` | Not applicable before live operation |
 
 ## 18. Plain-English summary
 
-Scantap now has a concrete founder pilot: Cincinnati, roughly `$200` in month-one capacity, `10–30 hours/week`, three black/white customizable formats, a GetTap-inspired operational dashboard, and an accessible—but not bargain-bin—price hypothesis. “Pilot exclusions” simply keep the first test local, small, measurable, and safe: no chains, risky review tactics, regulated managed-response work, rush fulfillment, or bespoke builds. The next local work can move into identity and prototypes; supplier costs, samples, payment readiness, and founder approval must still precede public prices or field sales.
+Scantap now has a concrete founder pilot and a tested local design prototype: three identity directions, black/white faces for all three formats, a neutral customer journey, a GetTap-inspired operational dashboard, complete state contracts, and a homepage structure. Signal Ledger is recommended but not approved. Read-only supplier research supports a modular sample-first path, while shipping, samples, payment readiness, name clearance, founder approval, and real production behavior still precede public prices or field sales.
 
 ## Current external sources
 
