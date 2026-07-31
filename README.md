@@ -1,34 +1,83 @@
-# Scantap
+# Scantap Reviews
 
-Scantap Reviews is a hardware-enabled reputation-management company. Scantap is the normal shorthand.
+Scantap helps local businesses turn in-person customer moments into a simple, measurable review workflow using NFC and QR products. `Project Breadnfc` is an internal repository name only; public surfaces use the Scantap name.
 
-`Project Breadnfc` is an internal repository name only. Do not use it in public copy, customer interfaces, product packaging, metadata, domains, or URLs.
+## Production website
 
-## Current phase
+This repository contains the production Next.js website and an interactive dashboard experience built in the selected **Signal Ledger** direction: cobalt blue, graphite, white, and cool gray; crisp typography; compact command surfaces; and clear operational states.
 
-The project has moved from launch definition into a local design prototype. The founder has confirmed the Cincinnati starting market, roughly $200 month-one budget, 10–30 weekly hours, and three black/white customizable product formats. `Signal Ledger` is the recommended identity direction, but the status remains `DIRECTION PROPOSED` until the founder selects a direction.
+The website includes:
 
-There is still no confirmed production website, dashboard, customer integration, supplier, inventory, payment system, or deployment. Prototype data is synthetic and the QR graphics are deliberately not scannable.
+- A comprehensive marketing homepage.
+- Product pages for the counter stand, adhesive plate, and staff card.
+- A hands-on dashboard demo with review, request, device, location, report, and settings workflows.
+- A client-side pilot planner that never claims to submit or create an order.
+- Industry, location, and editorial resource hubs.
+- Curated location-and-industry pages with original local context.
+- About, privacy, terms, sitemap, robots, metadata, and responsive navigation.
 
-Current project artifacts:
+## Customer review path
 
-- [Scantap launch definition — created 2026-07-30, updated 2026-07-31](docs/launch-definition/2026-07-30-scantap-launch-definition.md)
-- [Local design prototype](prototype/index.html)
-- [Design handoff and decision record](docs/design/2026-07-31-scantap-design-handoff.md)
-- [Read-only supplier and pilot-cost comparison](docs/research/2026-07-31-supplier-cost-comparison.md)
-- [Prototype run instructions](prototype/README.md)
+Scantap sends the customer directly to the business's configured Google review destination. The implementation does not hide or delay that destination based on a rating and does not use a sentiment-gated detour. QR remains available as a fallback on every physical format.
+
+## Run locally
+
+Requirements: Node.js 24 and pnpm 11.
+
+```powershell
+pnpm install
+pnpm dev
+```
+
+Then open `http://localhost:3000`.
+
+Quality gates:
+
+```powershell
+pnpm typecheck
+pnpm lint
+pnpm build
+```
+
+## Routes
+
+- `/` — marketing homepage
+- `/products` — standard and custom-branded product options
+- `/dashboard` — interactive sample workspace
+- `/pilot` — pilot planning tool
+- `/industries` and `/industries/[slug]`
+- `/locations` and `/locations/[slug]`
+- `/solutions/[location]/[industry]` — intentionally limited to curated combinations
+- `/resources` and `/resources/[slug]`
+- `/about`, `/privacy`, and `/terms`
+
+## Honest current limits
+
+- Dashboard data is fictitious and explicitly labeled as demo data.
+- Google Business Profile connectivity, authentication, database persistence, payments, transactional email, and live customer accounts are not enabled yet.
+- Pilot planner output remains in the browser unless the user copies or downloads it.
+- Pricing, supplier terms, product lead times, and inventory remain unconfirmed until physical sampling and landed-cost validation are complete.
+- No public contact form is shown because a verified delivery channel has not been configured.
+
+## Product and supplier work
+
+The current product targets are a black or white counter stand, adhesive plate, and staff card. Standard units carry Scantap branding; a separately scoped custom-business-branded option may be offered after artwork, lead time, and landed cost are confirmed.
+
+Supplier observations and physical QA gates are recorded in [the supplier comparison](docs/research/2026-07-31-supplier-cost-comparison.md). No supplier order is created by this codebase.
+
+## Design evidence
+
+Accepted direction and implementation evidence live in:
+
+- `docs/design/concepts/`
+- `docs/design/evidence/`
+- `.interface-design/system.md`
+
+The earlier `prototype/` remains an historical decision artifact; the Next.js application at the repository root is now the implementation source.
 
 ## Repository
 
-- Local workspace: `C:\Users\Ocean\Documents\Project Breadnfc`
+- Public brand: Scantap Reviews
 - Branch: `main`
 - Remote: `https://github.com/ocnbtl/projectbreadnfc.git`
-- Public brand: Scantap Reviews
-- Current external state: no public deployment is authorized or confirmed
-
-## Guardrails
-
-- Ask for honest reviews without review gating, sentiment-conditioned incentives, or fake reviews.
-- Keep the public-review option available without rating-based hiding, delay, discouragement, or added friction.
-- Do not publish performance, compliance, turnaround, pricing, or margin claims until the relevant evidence and approval exist.
-- Do not spend, order inventory, contact prospects or vendors as Scantap, connect production accounts, push, or deploy without the founder's explicit authority.
+- Hosting target: Vercel project `unigentamos/projectbreadnfc`

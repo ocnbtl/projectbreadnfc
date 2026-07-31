@@ -1,0 +1,24 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+
+# testing and builds
+/coverage
+/.next/
+/out/
+/.tmp/
+/.pnpm-store/
+/.npm-cache/
+
+# local environment
+.env*
+!.env.example
+
+# deployment
+.vercel
+
+# system
+.DS_Store
+Thumbs.db
+*.tsbuildinfo

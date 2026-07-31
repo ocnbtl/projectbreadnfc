@@ -8,15 +8,20 @@
 
 ## Recommendation
 
-Use a modular pilot build instead of commissioning finished custom products immediately:
+Treat the two founder-selected Alibaba listings below as the primary finished-product sample path. Ask for one written quote covering standard Scantap-branded black and white units, exact NFC/QR configuration, samples, minimums, landed cost, and lead time before committing funds. Keep the modular sample basket as the fallback if either listing exceeds the month-one budget, requires an impractical minimum, or fails the physical QA gates.
 
-1. **Staff card:** blank black and white NTAG213 PVC cards, encoded by Scantap, with a pilot-quality printed face treatment.
-2. **Adhesive plate:** a printed rigid face or card-size substrate with an on-metal NTAG213 tag and tested mounting adhesive.
-3. **Counter stand:** a standard 5 × 7-inch acrylic sign holder, replaceable printed insert, and an on-metal NFC tag positioned behind or on the insert after read testing.
-
-This path keeps the first samples reversible, lets Scantap test black and white treatments, and avoids committing to 500-unit custom minimums before demand and QA are known.
+Standard pilot hardware should use one Scantap face system across customers. Business-specific custom branding remains a separately quoted run with its own artwork proof, minimum, and lead time.
 
 ## Current candidate evidence
+
+### Founder-selected finished-product candidates
+
+The founder selected the following Alibaba listings as the preferred finished-product paths to sample next:
+
+- [Custom Printed NFC Google Review Card](https://www.alibaba.com/product-detail/Custom-Printed-NFC-Google-Review-Card_1601428498326.html)
+- [Factory Price Customization Programmable Smart Social product](https://www.alibaba.com/product-detail/Factory-Price-Customization-Programmable-Smart-Social_1601082258304.html)
+
+These are recorded as `PREFERRED SAMPLE CANDIDATES`, not approved vendors. Before purchase, confirm the exact substrate and dimensions, NFC chip, per-color availability, QR variable-data workflow, artwork proof, sample MOQ, standard Scantap-branded MOQ, custom-business-branded MOQ, unit price, setup charges, lead time, shipping, duties, replacement policy, and the final HTTPS encoding process. The public site therefore describes the formats and branding options without publishing unsupported material, price, or turnaround claims.
 
 | Candidate | Observed offer | Observed price / minimum | Best pilot use | Main limitation | Status |
 |---|---|---:|---|---|---|
@@ -107,7 +112,8 @@ landed variable cost =
 
 ## Decision
 
-- **Recommended now:** Basket A after explicit purchase approval.
-- **Do not order yet:** no spend was authorized by the design/prototype request.
-- **Reject for month one:** any 500-unit printed SKU.
-- **Reopen finished custom manufacturing:** after at least five paid pilots, an accepted face system, measured defect/support rate, and a repeatable 60% standard-product gross-margin path.
+- **Preferred next sample path:** one of the founder-selected Alibaba candidates after an explicit purchase approval and a complete written quote that fits the month-one ceiling.
+- **Fallback:** Basket A if the finished-product minimum, lead time, or landed cost is unsuitable.
+- **Do not order yet:** the website build does not authorize a purchase or vendor commitment.
+- **Reject for month one:** any untested 500-unit printed commitment.
+- **Business-specific custom runs:** quote separately only after the standard Scantap face, physical QA, landed cost, and supplier proofing workflow are accepted.
