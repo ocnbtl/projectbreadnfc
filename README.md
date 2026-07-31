@@ -6,11 +6,11 @@ Scantap Reviews is a hardware-enabled reputation-management company. Scantap is 
 
 ## Current phase
 
-The project is in launch definition. There is no confirmed production website, dashboard, customer integration, supplier, inventory, payment system, or deployment.
+The project is in launch definition and local design preparation. The founder has confirmed the Cincinnati starting market, roughly $200 month-one budget, 10–30 weekly hours, and three black/white customizable product formats. There is no confirmed production website, dashboard, customer integration, supplier, inventory, payment system, or deployment.
 
 The canonical current brief is:
 
-- [Scantap launch definition — 2026-07-30](docs/launch-definition/2026-07-30-scantap-launch-definition.md)
+- [Scantap launch definition — created 2026-07-30, updated 2026-07-31](docs/launch-definition/2026-07-30-scantap-launch-definition.md)
 
 ## Repository
 
