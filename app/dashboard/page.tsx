@@ -3,8 +3,7 @@ import { DashboardApp } from "@/components/dashboard-app";
 
 export const metadata: Metadata = {
   title: "Interactive reputation dashboard",
-  description:
-    "Explore the Scantap demo workspace for review activity, response work, insights, requests, locations, and NFC device health.",
+  description: "Try the Scantap public dashboard demo for review activity, replies, locations, and NFC device health.",
 };
 
 export default function DashboardPage() {
@@ -12,14 +11,14 @@ export default function DashboardPage() {
     <div className="dashboard-page">
       <div className="dashboard-intro section-shell">
         <div>
-          <h1>One place to see what changed and what needs your attention.</h1>
+          <h1>See the reviews, replies, and devices that need your attention.</h1>
           <p>
-            This working demo uses sample data. Try the filters, select a review,
-            draft a reply, create a request draft, export the inbox, and run the
-            connection check on the offline device.
+            This public demo uses sample data. Change the filters, open a review,
+            write a reply, compare locations, and run a device check to see how
+            the customer dashboard will work.
           </p>
         </div>
-        <span>Interactive demo · No customer data</span>
+        <span>Interactive demo · Sample data only</span>
       </div>
       <DashboardApp />
     </div>

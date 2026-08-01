@@ -36,29 +36,29 @@ export default async function IndustryPage({
   return (
     <>
       <PageHero
-        title={`A better review prompt for ${industry.name.toLowerCase()}.`}
+        title={`Get more reviews without slowing down your ${industry.name.toLowerCase()} team.`}
         description={industry.intro}
-        primary={{ label: "Build a pilot outline", href: "/pilot" }}
-        secondary={{ label: "See product formats", href: "/products" }}
+        primary={{ label: "Plan your first setup", href: "/pilot" }}
+        secondary={{ label: "Compare the products", href: "/products" }}
       />
       <section className="industry-detail section-shell">
         <article>
           <MessageSquareText size={25} />
-          <h2>Moments that make sense</h2>
+          <h2>When to ask</h2>
           <ul>
             {industry.moments.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </article>
         <article>
           <MapPin size={25} />
-          <h2>Good places to start</h2>
+          <h2>Where to place it</h2>
           <ul>
             {industry.placements.map((item) => <li key={item}>{item}</li>)}
           </ul>
         </article>
         <article>
           <BarChart3 size={25} />
-          <h2>What the dashboard should answer</h2>
+          <h2>What to watch</h2>
           <ul>
             {industry.dashboard.map((item) => <li key={item}>{item}</li>)}
           </ul>
@@ -66,14 +66,14 @@ export default async function IndustryPage({
       </section>
       <section className="plain-cta section-shell">
         <div>
-          <h2>Start with one placement and one weekly routine.</h2>
+          <h2>Start small enough to see what works.</h2>
           <p>
-            A smaller pilot makes it easier to tell whether the placement,
-            team habit, and dashboard are genuinely useful.
+            One or two placements are usually enough to learn whether customers
+            notice the prompt and whether the dashboard saves your team time.
           </p>
         </div>
         <Link className="button button-primary" href="/pilot">
-          Plan the first version <ArrowRight size={17} />
+          Plan your setup <ArrowRight size={17} />
         </Link>
       </section>
     </>

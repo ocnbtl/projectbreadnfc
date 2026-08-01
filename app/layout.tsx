@@ -11,21 +11,31 @@ export const metadata: Metadata = {
     template: "%s | Scantap",
   },
   description:
-    "Scantap gives customers a direct path to your Google review page and gives your business a clearer way to follow what happens next.",
+    "Scantap helps local businesses earn more Google reviews with NFC and QR products, then manage reviews, replies, locations, and devices from one dashboard.",
   applicationName: "Scantap",
   alternates: { canonical: "/" },
   openGraph: {
     type: "website",
+    url: siteUrl,
     siteName: "Scantap",
-    title: "Scantap | Make the next good customer moment easier to share",
+    title: "Scantap | Drive traffic and sales with more five-star reviews",
     description:
-      "NFC review tools and a focused reputation dashboard for local businesses.",
+      "NFC review products and a straightforward reputation dashboard for local businesses.",
+    images: [
+      {
+        url: "/images/scantap-counter-stand.png",
+        width: 1536,
+        height: 1150,
+        alt: "Scantap NFC and QR counter stand for Google reviews",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Scantap | NFC review tools for local businesses",
     description:
-      "A direct review path and a clearer way to follow the signal.",
+      "Make the Google review ask easy while the customer experience is still fresh.",
+    images: ["/images/scantap-counter-stand.png"],
   },
 };
 

@@ -54,22 +54,22 @@ export default async function SolutionPage({
       <PageHero
         title={solution.title}
         description={solution.description}
-        primary={{ label: "Build a pilot outline", href: "/pilot" }}
+        primary={{ label: "Plan your first setup", href: "/pilot" }}
         secondary={{ label: `About ${location.name}`, href: `/locations/${location.slug}` }}
       />
       <section className="solution-context section-shell">
         <div>
           <MapPin size={25} />
-          <h2>Why the local context matters</h2>
+          <h2>Why this setup fits {location.name}</h2>
         </div>
         <p>{solution.localAngle}</p>
       </section>
       <section className="solution-plan section-shell">
         <div>
-          <h2>A useful first version</h2>
+          <h2>Start with this setup</h2>
           <p>
-            Keep the initial setup small enough to watch closely and adjust
-            after real customer use.
+            Keep the first version simple, watch how customers use it, and
+            adjust the placement from real activity.
           </p>
         </div>
         <ol>

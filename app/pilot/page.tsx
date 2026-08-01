@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { PilotPlanner } from "@/components/pilot-planner";
 
 export const metadata: Metadata = {
-  title: "Plan a Scantap pilot",
+  title: "Plan your Scantap setup",
   description:
     "Build a small, practical Scantap pilot outline without submitting business information.",
 };
@@ -11,16 +11,15 @@ export default function PilotPage() {
   return (
     <section className="pilot-page section-shell">
       <div className="pilot-intro">
-        <h1>Plan the smallest pilot that can teach you something useful.</h1>
+        <h1>Tell us how your business works. We will map the first setup.</h1>
         <p>
-          Choose the hardware, the first job the dashboard should handle, and
-          how many locations to include. You can copy or download the outline
-          when you are done.
+          Choose the product, the first dashboard job, and the number of
+          locations. You can copy or download a starting outline when you finish.
         </p>
       </div>
       <PilotPlanner />
       <div className="pilot-note">
-        <h2>What happens before a real pilot starts</h2>
+        <h2>What we confirm before anything goes live</h2>
         <div>
           <p>
             Scantap still needs to confirm the business&apos;s Google review

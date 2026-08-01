@@ -5,39 +5,28 @@ import { industries } from "@/lib/site-data";
 
 export const metadata: Metadata = {
   title: "Review tools by industry",
-  description:
-    "See how Scantap NFC review tools fit restaurants, home services, specialty retail, and professional services.",
+  description: "See how Scantap fits restaurants, home services, specialty retail, and professional offices.",
 };
 
 export default function IndustriesPage() {
   return (
     <>
       <PageHero
-        title="The review moment is different in every kind of business."
-        description="A restaurant host stand, a contractor's final walkthrough, and a professional office closeout should not use the same placement plan. Start with the customer moment that already makes sense."
-        primary={{ label: "Plan a pilot", href: "/pilot" }}
-        secondary={{ label: "Compare products", href: "/products" }}
+        title="Where should you ask for a review? It depends on how the job ends."
+        description="A restaurant checkout, a contractor's final walkthrough, and a salon front desk each need a different setup. Find the customer moment first, then choose the product that fits it."
+        primary={{ label: "Find your starting point", href: "/pilot" }}
+        secondary={{ label: "See the products", href: "/products" }}
       />
       <section className="listing-section section-shell">
         <div className="listing-grid">
           {industries.map((industry) => (
-            <DirectoryCard
-              description={industry.short}
-              href={`/industries/${industry.slug}`}
-              key={industry.slug}
-              meta="Industry guide"
-              title={industry.name}
-            />
+            <DirectoryCard description={industry.short} href={`/industries/${industry.slug}`} key={industry.slug} meta="Industry guide" title={industry.name} />
           ))}
         </div>
       </section>
       <section className="content-principle section-shell">
-        <h2>Industry guidance should change the plan, not just the headline.</h2>
-        <p>
-          Each guide focuses on different customer moments, placements, and
-          dashboard questions. Scantap will add new industry pages only when
-          there is enough firsthand operating knowledge to make them useful.
-        </p>
+        <h2>Useful advice should change where you place the product.</h2>
+        <p>Each guide covers the best time to ask, the placement most likely to get noticed, and the dashboard information worth checking afterward.</p>
       </section>
     </>
   );

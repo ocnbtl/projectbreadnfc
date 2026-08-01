@@ -1,6 +1,6 @@
 export const siteUrl =
   process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ||
-  "http://localhost:3000";
+  "https://projectbreadnfc.vercel.app";
 
 export type Product = {
   slug: string;
@@ -15,29 +15,26 @@ export const products: Product[] = [
   {
     slug: "counter-stand",
     name: "Counter stand",
-    summary: "A visible, stable prompt for the point where a visit naturally ends.",
-    placement: "Checkout counters, reception desks, host stands",
-    bestFor: "A consistent review prompt customers can spot on their own",
-    detail:
-      "The standard Scantap version keeps setup simple. White and black formats are planned, with a QR fallback alongside NFC.",
+    summary: "A clear review prompt customers can see at checkout or on the way out.",
+    placement: "Checkout counters, reception desks, and host stands",
+    bestFor: "You want one visible review point that stays put",
+    detail: "The angled stand keeps the tap point and QR code easy to reach without taking over the counter. Choose a black or white Scantap design for the fastest setup.",
   },
   {
     slug: "adhesive-plate",
     name: "Adhesive plate",
-    summary: "A low-profile tap point for surfaces that already get customer attention.",
-    placement: "Registers, doors, mirrors, service counters",
-    bestFor: "Tight spaces and fixed placement",
-    detail:
-      "The plate stays out of the way while keeping the review link available. Final adhesive and surface testing will be completed before inventory is sold.",
+    summary: "A slim, fixed review point for counters, doors, mirrors, and other tight spaces.",
+    placement: "Registers, doors, mirrors, and service counters",
+    bestFor: "You need the review prompt to stay flat and out of the way",
+    detail: "The plate adds a tap point without adding another object to the counter. We will confirm the surface and placement before installation so the adhesive has the best chance to hold.",
   },
   {
     slug: "staff-card",
     name: "Staff card",
-    summary: "A handoff-friendly card for team members who ask at the right moment.",
-    placement: "Front desks, field teams, table service",
-    bestFor: "Businesses where the interaction moves around",
-    detail:
-      "The staff card gives a real person a simple prompt to share. It is not intended for selective review requests.",
+    summary: "A pocket-sized review link for teams that finish the job away from a counter.",
+    placement: "Field teams, table service, front desks, and final walkthroughs",
+    bestFor: "The customer handoff moves with your team",
+    detail: "The staff card makes the same neutral Google review request available wherever the interaction ends. It works especially well for technicians, servers, and mobile service teams.",
   },
 ];
 
@@ -55,73 +52,37 @@ export const industries: Industry[] = [
   {
     slug: "restaurants",
     name: "Restaurants",
-    short: "Put the review prompt where a good meal naturally ends.",
-    intro:
-      "Restaurants rarely need another script. They need a prompt that fits checkout, pickup, or the final table touch without interrupting service.",
-    moments: [
-      "After a smooth checkout or pickup",
-      "When a guest compliments the food or staff",
-      "At the host stand as a visit ends",
-    ],
-    dashboard: [
-      "Review volume and rating movement",
-      "Recurring themes such as service, wait time, and food quality",
-      "Which placement gets used most often",
-    ],
-    placements: ["Counter stand", "Host-stand plate", "Staff card"],
+    short: "Make the review ask easy at checkout, pickup, or the host stand.",
+    intro: "A restaurant team does not need another long script. Scantap gives every guest the same quick, optional path to your Google review page when the visit ends.",
+    moments: ["At checkout after the bill is settled", "When a pickup order is handed over", "At the host stand as guests leave"],
+    dashboard: ["New reviews and rating changes", "Themes such as service, wait time, and food quality", "Which placement customers use most"],
+    placements: ["Counter stand", "Host-stand adhesive plate", "Staff card"],
   },
   {
     slug: "home-services",
     name: "Home services",
-    short: "Give technicians a professional way to ask after the work is done.",
-    intro:
-      "For contractors and field-service teams, the best review moment is often at the final walkthrough—not in a text message days later.",
-    moments: [
-      "After the customer approves completed work",
-      "At invoice or receipt handoff",
-      "After a technician answers the final questions",
-    ],
-    dashboard: [
-      "Review activity by service area",
-      "Response queue for owner follow-up",
-      "Staff-card and location activity",
-    ],
-    placements: ["Staff card", "Vehicle-ready card", "Office counter stand"],
+    short: "Give technicians one professional way to share the review link after the work is done.",
+    intro: "For contractors and field-service teams, the review moment usually happens at the final walkthrough. A staff card keeps the link ready without relying on a follow-up message days later.",
+    moments: ["After the customer reviews the completed work", "When the invoice or receipt is handed over", "After the technician answers the final questions"],
+    dashboard: ["Review activity by service area", "Reviews waiting for an owner reply", "Staff-card activity by team or location"],
+    placements: ["Staff card", "Vehicle or equipment case", "Office counter stand"],
   },
   {
     slug: "specialty-retail",
     name: "Specialty retail",
-    short: "Keep the ask quick in stores where regulars and referrals matter.",
-    intro:
-      "Independent retailers build trust one conversation at a time. Scantap makes the review link easy to share without adding a complicated checkout step.",
-    moments: [
-      "After product guidance or a successful recommendation",
-      "At the register when the customer is already satisfied",
-      "During community events and in-store demos",
-    ],
-    dashboard: [
-      "Taps by store or placement",
-      "Review themes and rating distribution",
-      "Offline or underused devices",
-    ],
+    short: "Put the review link at the register without adding another checkout step.",
+    intro: "Independent stores win on helpful conversations and regular customers. Scantap keeps the Google review link visible without interrupting the checkout experience.",
+    moments: ["At the register after payment", "When an order or special item is picked up", "During staffed events and product demonstrations"],
+    dashboard: ["Taps by store and placement", "Review themes and rating mix", "Devices that are offline or rarely used"],
     placements: ["Counter stand", "Register plate", "Staff card"],
   },
   {
     slug: "professional-services",
     name: "Professional services",
-    short: "Make a thoughtful review request feel like part of the closeout.",
-    intro:
-      "Local practices and service firms need a calm, professional ask that respects the client relationship and keeps the next step clear.",
-    moments: [
-      "After a successful appointment",
-      "At the completion of a project or engagement",
-      "When a client offers unsolicited praise",
-    ],
-    dashboard: [
-      "Reviews that still need a reply",
-      "Service themes over time",
-      "Activity across offices or teams",
-    ],
+    short: "Keep the review request calm, clear, and appropriate for the client relationship.",
+    intro: "Practices and service firms need a review request that feels like a natural closeout. Scantap makes the option visible at reception or during the final handoff.",
+    moments: ["After a completed appointment", "At the end of a project or engagement", "When final documents or results are delivered"],
+    dashboard: ["Reviews that still need a reply", "Service themes over time", "Activity across offices or teams"],
     placements: ["Reception stand", "Checkout plate", "Advisor card"],
   },
 ];
@@ -140,39 +101,24 @@ export const locations: Location[] = [
     slug: "cincinnati",
     name: "Cincinnati",
     region: "Ohio",
-    intro:
-      "A practical review system for independent Cincinnati businesses that win on local trust.",
-    localContext: [
-      "Neighborhood businesses compete across distinct local search markets.",
-      "Owners often manage the review queue themselves between daily operations.",
-      "A physical prompt can reach customers who ignore a later text or email.",
-    ],
+    intro: "Simple review tools and local setup support for independent Cincinnati businesses.",
+    localContext: ["Customers often compare businesses across several nearby neighborhoods.", "Many owners still manage the review queue themselves.", "A physical prompt can reach customers before a later message gets ignored."],
     nearby: ["Oakley", "Hyde Park", "Clifton", "Blue Ash", "Mason"],
   },
   {
     slug: "mason",
     name: "Mason",
     region: "Ohio",
-    intro:
-      "Review tools for Mason businesses serving residents, families, and visitors in a busy suburban market.",
-    localContext: [
-      "High-intent local searches often compare several nearby options at once.",
-      "Restaurants, home services, and specialty retailers depend on recent proof.",
-      "Owner-operated teams benefit from a review process that does not add admin.",
-    ],
+    intro: "A quick Google review path for Mason businesses serving residents, families, and visitors.",
+    localContext: ["Customers can compare several nearby options from one search.", "Restaurants, home services, and retailers benefit from recent reviews.", "Small teams need a review routine that does not add more admin."],
     nearby: ["Deerfield Township", "Kings Mills", "West Chester", "Lebanon"],
   },
   {
     slug: "blue-ash",
     name: "Blue Ash",
     region: "Ohio",
-    intro:
-      "A straightforward way for Blue Ash businesses to turn good in-person experiences into visible local trust.",
-    localContext: [
-      "The area mixes professional offices, restaurants, and everyday services.",
-      "Daytime customers and local residents can have different service patterns.",
-      "Location-level activity helps owners see which prompt is actually being used.",
-    ],
+    intro: "Review tools for Blue Ash offices, restaurants, shops, and everyday service businesses.",
+    localContext: ["The area serves both a large daytime workforce and nearby residents.", "Professional offices and local services often need a quieter review ask.", "Location-level activity helps owners see which prompt customers notice."],
     nearby: ["Montgomery", "Sharonville", "Kenwood", "Sycamore Township"],
   },
 ];
@@ -191,105 +137,65 @@ export const articles: Article[] = [
   {
     slug: "how-to-ask-for-a-google-review",
     title: "How to ask for a Google review without making it awkward",
-    description:
-      "A practical way to choose the moment, phrase the ask, and keep the request honest.",
+    description: "A short, comfortable way to introduce the review link to every customer.",
     category: "Review requests",
     readTime: "6 min read",
     published: "July 31, 2026",
     sections: [
       {
-        heading: "Start with the moment, not the script",
-        paragraphs: [
-          "The best review request usually follows a specific sign that the customer is happy: they thank the technician, compliment the meal, or say they will come back. That is a better cue than asking every employee to repeat the same line at every transaction.",
-          "Keep the request short. Tell the customer where the tap goes and let them decide whether to continue.",
-        ],
+        heading: "Keep the request short",
+        paragraphs: ["Customers do not need a sales pitch. Tell them where the tap goes, make the choice optional, and let the product handle the rest.", "Use the same neutral request for every customer. That keeps the process fair and makes the habit easier for staff to remember."],
       },
       {
-        heading: "Use one honest sentence",
-        paragraphs: [
-          "Try: “If you have a minute, you can tap here to share your experience on Google.” It explains the action without pushing for a particular rating.",
-        ],
-        points: [
-          "Do not ask only customers you expect to leave five stars.",
-          "Do not offer a reward for a positive review.",
-          "Do not put a private form in front of the public review option.",
-        ],
+        heading: "Use one sentence your team can say naturally",
+        paragraphs: ["Try: “If you have a minute, you can tap here to share your experience on Google.” It explains the action without asking for a particular rating."],
+        points: ["Offer the same review path to every customer.", "Do not offer a reward for a positive review.", "Do not hide the public review link behind a private rating form."],
       },
       {
-        heading: "Make the physical placement do some of the work",
-        paragraphs: [
-          "A counter stand can make the next step obvious without forcing an employee to interrupt. For mobile teams, a staff card works better because it stays with the person closing out the job.",
-          "Test one placement at a time and track whether customers actually use it. More hardware is not automatically better.",
-        ],
+        heading: "Let the placement do some of the work",
+        paragraphs: ["A counter stand keeps the option visible without making an employee interrupt. For mobile teams, a staff card works because it stays with the person closing out the job.", "Start with one placement. If customers do not use it, move it before buying more hardware."],
       },
     ],
   },
   {
     slug: "where-to-place-nfc-review-tags",
     title: "Five places an NFC review tag can earn its spot",
-    description:
-      "Placement ideas for counters, service handoffs, reception desks, and field teams.",
+    description: "Practical placement ideas for counters, reception desks, pickups, and field teams.",
     category: "Hardware",
     readTime: "5 min read",
     published: "July 31, 2026",
     sections: [
       {
-        heading: "Placement should follow the customer journey",
-        paragraphs: [
-          "Put the prompt where the customer has finished the main experience and still has a free moment. A beautiful tag in the wrong place will not get used.",
-        ],
-        points: [
-          "Beside the payment terminal, without covering instructions",
-          "At a reception or host stand near the natural exit",
-          "On a service counter where completed orders are handed over",
-          "On a staff card used during the final walkthrough",
-          "Near a pickup shelf when staff can still answer questions",
-        ],
+        heading: "Put it where the experience ends",
+        paragraphs: ["The best placement is usually where the customer has finished the main interaction and has a free hand. A great-looking product in the wrong place will still be ignored."],
+        points: ["Beside the payment terminal without covering instructions", "At reception or the host stand near the exit", "Where completed orders are handed over", "On a staff card used during the final walkthrough", "Near a pickup shelf where staff can still answer questions"],
       },
       {
-        heading: "Watch for friction",
-        paragraphs: [
-          "Avoid crowded signage, surfaces customers cannot comfortably reach, and placements that imply tapping is required. The QR fallback should remain visible for phones or users who prefer a camera.",
-          "Check the tag on both iPhone and Android devices after installation, then repeat the check whenever the destination changes.",
-        ],
+        heading: "Remove the small points of friction",
+        paragraphs: ["Avoid crowded signage, hard-to-reach surfaces, and placements that make tapping look required. Keep the QR code visible for customers who prefer their camera.", "Test NFC and QR on both iPhone and Android before the product goes in front of customers."],
       },
     ],
   },
   {
     slug: "review-dashboard-metrics-that-matter",
-    title: "The review dashboard metrics worth checking each week",
-    description:
-      "A small-business scorecard for new reviews, response work, themes, and device health.",
+    title: "The review dashboard numbers worth checking each week",
+    description: "A simple weekly scorecard for reviews, replies, themes, and device health.",
     category: "Dashboard",
     readTime: "7 min read",
     published: "July 31, 2026",
     sections: [
       {
-        heading: "Begin with work that needs attention",
-        paragraphs: [
-          "A dashboard should answer three questions quickly: what changed, what needs a reply, and whether the review prompts are working. A large number with no next step is usually decoration.",
-        ],
-        points: [
-          "New reviews and rating movement",
-          "Reviews waiting for a response",
-          "Response rate and median response time",
-          "Repeated themes in recent feedback",
-          "NFC interactions and destination opens",
-          "Offline or underused devices",
-        ],
+        heading: "Start with work that needs attention",
+        paragraphs: ["A useful dashboard answers three questions quickly: what changed, what needs a reply, and whether the review prompts are working. A big number with no next step is just decoration."],
+        points: ["New reviews and rating movement", "Reviews waiting for a response", "Response rate and response time", "Repeated themes in recent feedback", "NFC interactions and Google page opens", "Offline or underused devices"],
       },
       {
-        heading: "Do not confuse a tap with a review",
-        paragraphs: [
-          "An NFC interaction shows that someone used the prompt. A Google link open shows the next page loaded. Neither proves a review was submitted. Keep those events separate so the numbers stay useful.",
-          "Compare trends over time, but avoid claiming a direct cause unless the underlying data supports it.",
-        ],
+        heading: "Do not call every tap a review",
+        paragraphs: ["An NFC interaction means someone used the product. A Google page open means the link loaded. Neither proves a review was submitted, so the dashboard should keep those events separate.", "Look for trends, but do not claim the hardware caused a review unless the data can actually support it."],
       },
       {
-        heading: "Choose a short weekly routine",
-        paragraphs: [
-          "Set aside fifteen minutes to reply to recent reviews, scan for repeated themes, and check device health. The dashboard should make that routine faster instead of creating another reporting project.",
-        ],
+        heading: "Build a fifteen-minute routine",
+        paragraphs: ["Reply to recent reviews, scan for repeated themes, and check device health once a week. If the dashboard turns that into another reporting project, it is doing too much."],
       },
     ],
   },
@@ -300,56 +206,26 @@ export const curatedSolutions = [
     location: "mason",
     industry: "restaurants",
     title: "Google review tools for restaurants in Mason, Ohio",
-    description:
-      "A practical NFC review setup for Mason restaurants, pickup counters, and host stands.",
-    localAngle:
-      "Mason restaurants serve regulars, families, and visitors who may compare several nearby options before choosing where to eat. Recent, specific reviews help the next customer understand what the experience is actually like.",
-    plan: [
-      "Start with one stand at the host or checkout area",
-      "Use a staff card only when a guest gives clear positive feedback",
-      "Track placement use separately from completed Google reviews",
-      "Review wait-time and service themes once a week",
-    ],
+    description: "A simple Scantap setup for Mason restaurants, pickup counters, and host stands.",
+    localAngle: "Mason restaurants serve regulars, families, and visitors who may compare several nearby options. Recent, specific reviews help the next guest understand the experience before they choose where to eat.",
+    plan: ["Start with one stand at the host or checkout area", "Use the same neutral review request for every guest", "Keep device activity separate from completed Google reviews", "Check service and wait-time themes once a week"],
   },
   {
     location: "cincinnati",
     industry: "home-services",
     title: "Google review tools for home-service teams in Cincinnati",
-    description:
-      "A direct review path for Cincinnati contractors and field-service teams at the final walkthrough.",
-    localAngle:
-      "Cincinnati home-service businesses often work across several neighborhoods and depend on trust before a customer ever calls. A staff card keeps the review ask available at the moment the customer approves the work.",
-    plan: [
-      "Assign staff cards to the people who close out jobs",
-      "Use one neutral review request across the team",
-      "Compare activity by service area without ranking employees",
-      "Reply to specific service concerns while the job is still recent",
-    ],
+    description: "A direct review path for contractors and field-service teams at the final walkthrough.",
+    localAngle: "Cincinnati home-service businesses work across many neighborhoods and depend on trust before the customer ever calls. A staff card keeps the review link ready when the work is approved.",
+    plan: ["Give staff cards to the people who close out jobs", "Use one clear review request across the team", "Compare activity by service area without ranking employees", "Reply while the job details are still fresh"],
   },
   {
     location: "blue-ash",
     industry: "professional-services",
     title: "Review management for professional services in Blue Ash, Ohio",
-    description:
-      "A measured review workflow for Blue Ash offices, practices, and client-service teams.",
-    localAngle:
-      "Blue Ash combines a strong daytime business population with nearby residents. Professional firms need a review request that feels like a respectful closeout, not a retail promotion.",
-    plan: [
-      "Place a counter stand at reception or checkout",
-      "Keep the public Google destination clear and optional",
-      "Route response work to an approved owner or manager",
-      "Review location and service themes without exposing client details",
-    ],
+    description: "A calm review workflow for Blue Ash offices, practices, and client-service teams.",
+    localAngle: "Blue Ash combines a large daytime business population with nearby residents. Professional firms need a review request that feels like a respectful closeout, not a retail promotion.",
+    plan: ["Place a counter stand at reception or checkout", "Keep the Google destination clear and optional", "Assign response work to one owner or manager", "Review service themes without exposing client details"],
   },
-];
-
-export const navItems = [
-  { href: "/products", label: "Products" },
-  { href: "/dashboard", label: "Dashboard" },
-  { href: "/industries", label: "Industries" },
-  { href: "/locations", label: "Locations" },
-  { href: "/resources", label: "Resources" },
-  { href: "/about", label: "About" },
 ];
 
 export function getIndustry(slug: string) {

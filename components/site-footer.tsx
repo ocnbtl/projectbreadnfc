@@ -3,19 +3,20 @@ import { BrandMark } from "./brand-mark";
 
 const footerGroups = [
   {
-    title: "Explore",
+    title: "Product",
     links: [
       ["Products", "/products"],
-      ["Dashboard", "/dashboard"],
-      ["Pilot planner", "/pilot"],
+      ["Dashboard demo", "/dashboard"],
+      ["Plan a setup", "/pilot"],
+      ["Customer login", "/login"],
     ],
   },
   {
-    title: "Solutions",
+    title: "Resources",
     links: [
       ["Industries", "/industries"],
       ["Locations", "/locations"],
-      ["Resources", "/resources"],
+      ["Blog", "/resources"],
     ],
   },
   {
@@ -34,26 +35,19 @@ export function SiteFooter() {
       <div className="footer-grid">
         <div className="footer-brand">
           <BrandMark />
-          <p>
-            NFC review tools and a focused reputation dashboard for small
-            businesses in Greater Cincinnati.
-          </p>
+          <p>Simple review tools for the customer moments that already happen in your business.</p>
           <span>Founder-led in Cincinnati, Ohio.</span>
         </div>
         {footerGroups.map((group) => (
           <div className="footer-group" key={group.title}>
             <h2>{group.title}</h2>
-            {group.links.map(([label, href]) => (
-              <Link href={href} key={href}>
-                {label}
-              </Link>
-            ))}
+            {group.links.map(([label, href]) => <Link href={href} key={href}>{label}</Link>)}
           </div>
         ))}
       </div>
       <div className="footer-base">
         <span>© {new Date().getFullYear()} Scantap. All rights reserved.</span>
-        <span>Clear prompts. Honest reviews. Useful follow-through.</span>
+        <span>Tap. Review. Grow.</span>
       </div>
     </footer>
   );

@@ -134,6 +134,16 @@ const trendData = [
   { day: "Jul 29", reviews: 13, opens: 34 },
 ];
 
+const ratingHistoryData = [
+  { day: "Jul 11", one: 0, two: 0, three: 1, four: 2, five: 5 },
+  { day: "Jul 12", one: 0, two: 1, three: 0, four: 3, five: 6 },
+  { day: "Jul 13", one: 1, two: 0, three: 1, four: 2, five: 8 },
+  { day: "Jul 14", one: 0, two: 0, three: 1, four: 4, five: 7 },
+  { day: "Jul 15", one: 1, two: 1, three: 0, four: 2, five: 9 },
+  { day: "Jul 16", one: 0, two: 0, three: 2, four: 3, five: 6 },
+  { day: "Jul 17", one: 2, two: 0, three: 0, four: 1, five: 7 },
+];
+
 const devicesSeed = [
   { id: "NFC-7B2F", name: "Front desk stand", location: "Main Street", battery: 100, online: true },
   { id: "NFC-3A91", name: "Exit plate", location: "Main Street", battery: 98, online: true },
@@ -591,6 +601,37 @@ function OverviewView({
           <div className="chart-legend">
             <span><i className="legend-line" /> Reviews</span>
             <span><i className="legend-bar" /> Google link opens</span>
+          </div>
+        </article>
+
+        <article className="app-panel app-rating-history">
+          <PanelHeading title="Reviews by rating" detail="Daily rating mix for the last 7 days" action="Last 7 days" />
+          <div className="rating-history-chart" aria-label="Stacked bar chart showing reviews by star rating for each of the last seven days">
+            <ResponsiveContainer height="100%" width="100%">
+              <ComposedChart data={ratingHistoryData} margin={{ top: 14, right: 8, left: -22, bottom: 0 }}>
+                <CartesianGrid stroke="#edf0f4" vertical={false} />
+                <XAxis axisLine={false} dataKey="day" fontSize={11} tickLine={false} />
+                <YAxis allowDecimals={false} axisLine={false} fontSize={11} tickLine={false} />
+                <Tooltip
+                  contentStyle={{ border: "1px solid #dfe5ed", borderRadius: 10, fontSize: 12 }}
+                  formatter={(value, name) => [`${value} review${value === 1 ? "" : "s"}`, `${name}-star`]}
+                />
+                <Bar dataKey="one" fill="#d94b54" name="1" stackId="ratings" />
+                <Bar dataKey="two" fill="#e98b3a" name="2" stackId="ratings" />
+                <Bar dataKey="three" fill="#d5aa28" name="3" stackId="ratings" />
+                <Bar dataKey="four" fill="#78a6f8" name="4" stackId="ratings" />
+                <Bar dataKey="five" fill="#155eef" name="5" radius={[4, 4, 0, 0]} stackId="ratings" />
+              </ComposedChart>
+            </ResponsiveContainer>
+          </div>
+          <div className="rating-history-legend" aria-label="Rating chart legend">
+            {[
+              ["#155eef", "5 star"],
+              ["#78a6f8", "4 star"],
+              ["#d5aa28", "3 star"],
+              ["#e98b3a", "2 star"],
+              ["#d94b54", "1 star"],
+            ].map(([color, label]) => <span key={label}><i style={{ background: color }} />{label}</span>)}
           </div>
         </article>
 
