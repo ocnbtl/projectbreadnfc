@@ -6,6 +6,7 @@ import { curatedSolutions, locations } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Greater Cincinnati service areas",
   description: "Local review tools and practical guidance for businesses in Cincinnati, Mason, and Blue Ash, Ohio.",
+  alternates: { canonical: "/locations" },
 };
 
 export default function LocationsPage() {

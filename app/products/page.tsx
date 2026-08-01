@@ -8,6 +8,7 @@ import { products } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "NFC review products",
   description: "Compare the Scantap counter stand, adhesive plate, and staff card for in-person Google review requests.",
+  alternates: { canonical: "/products" },
 };
 
 const productImages = [

@@ -5,6 +5,7 @@ import { LoginForm } from "@/components/login-form";
 export const metadata: Metadata = {
   title: "Customer login",
   description: "Log in to your Scantap customer dashboard or explore the public dashboard demo.",
+  alternates: { canonical: "/login" },
   robots: { index: false, follow: false },
 };
 

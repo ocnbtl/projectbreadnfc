@@ -4,6 +4,7 @@ import { DashboardApp } from "@/components/dashboard-app";
 export const metadata: Metadata = {
   title: "Interactive reputation dashboard",
   description: "Try the Scantap public dashboard demo for review activity, replies, locations, and NFC device health.",
+  alternates: { canonical: "/dashboard" },
 };
 
 export default function DashboardPage() {

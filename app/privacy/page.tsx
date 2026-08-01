@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Privacy",
   description: "Scantap website privacy information.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPage() {

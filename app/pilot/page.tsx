@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Plan your Scantap setup",
   description:
     "Build a small, practical Scantap pilot outline without submitting business information.",
+  alternates: { canonical: "/pilot" },
 };
 
 export default function PilotPage() {

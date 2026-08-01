@@ -6,6 +6,7 @@ import { industries } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Review tools by industry",
   description: "See how Scantap fits restaurants, home services, specialty retail, and professional offices.",
+  alternates: { canonical: "/industries" },
 };
 
 export default function IndustriesPage() {

@@ -6,6 +6,7 @@ import { PageHero } from "@/components/page-hero";
 export const metadata: Metadata = {
   title: "About Scantap",
   description: "Scantap is a Cincinnati company building straightforward NFC review tools and reputation software for small businesses.",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {

@@ -6,6 +6,7 @@ import { articles } from "@/lib/site-data";
 export const metadata: Metadata = {
   title: "Review management blog",
   description: "Practical guides to review requests, NFC tag placement, reputation dashboard metrics, and local-business review practices.",
+  alternates: { canonical: "/resources" },
 };
 
 export default function ResourcesPage() {

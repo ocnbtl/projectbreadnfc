@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 export const metadata: Metadata = {
   title: "Terms",
   description: "Scantap website and demo terms.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsPage() {
