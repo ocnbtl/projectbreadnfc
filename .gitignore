@@ -8,8 +8,12 @@
 /.next/
 /out/
 /.tmp/
+/.playwright-cli/
+/.qa/
+/.recordings/
 /.pnpm-store/
 /.npm-cache/
+/.next-dev.*.log
 
 # local environment
 .env*

@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
-import { SiteHeader } from "@/components/site-header";
-import { SiteFooter } from "@/components/site-footer";
+import "./app/product-app.css";
+import { SiteChrome } from "@/components/site-chrome";
 import { siteUrl } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -60,12 +60,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
-        <a className="skip-link" href="#main-content">
-          Skip to content
-        </a>
-        <SiteHeader />
-        <main id="main-content">{children}</main>
-        <SiteFooter />
+        <SiteChrome>{children}</SiteChrome>
         <script
           dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
           type="application/ld+json"

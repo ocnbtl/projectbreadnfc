@@ -1,0 +1,129 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-05T23:58:00Z",
+  "title": "Design System: Scantap Signal Ledger",
+  "extensions": {
+    "colorMeta": {
+      "signal-blue": {
+        "role": "primary",
+        "displayName": "Signal Blue",
+        "canonical": "#155eef",
+        "tonalRamp": ["#071a45", "#0b2f82", "#0f49bf", "#155eef", "#4c83f5", "#86aafb", "#c4d6ff", "#edf4ff"]
+      },
+      "graphite": {
+        "role": "neutral",
+        "displayName": "Graphite",
+        "canonical": "#111318",
+        "tonalRamp": ["#111318", "#242831", "#3b414d", "#596170", "#7a8493", "#a2aab6", "#d1d6de", "#f7f9fc"]
+      },
+      "success": {
+        "role": "success",
+        "displayName": "Success",
+        "canonical": "#15803d",
+        "tonalRamp": ["#15803d", "#e8f7ee"]
+      },
+      "danger": {
+        "role": "danger",
+        "displayName": "Danger",
+        "canonical": "#e5484d",
+        "tonalRamp": ["#b4232a", "#e5484d", "#fff0f0"]
+      },
+      "provider-accents": {
+        "role": "accent",
+        "displayName": "Provider and rating accents",
+        "canonical": "#4285f4",
+        "tonalRamp": ["#4285f4", "#f6ad10"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Public display", "purpose": "Large public-facing headlines only." },
+      "product-title": { "displayName": "Product title", "purpose": "Current task and workspace heading." },
+      "body": { "displayName": "Body", "purpose": "Explanations, records, and supporting content." },
+      "label": { "displayName": "Label", "purpose": "Controls, state, and compact metadata." },
+      "product-metadata": { "displayName": "Product metadata", "purpose": "11px timestamps, counts, and provenance only." },
+      "product-label": { "displayName": "Product label", "purpose": "12px status and field support." },
+      "product-control": { "displayName": "Product control", "purpose": "13px buttons and compact interaction." },
+      "product-body": { "displayName": "Product body", "purpose": "14px operational explanations and records." }
+    },
+    "shadows": [
+      { "name": "working-lift", "value": "0 4px 18px rgba(25, 39, 61, 0.07)", "purpose": "Menus and focused task panels." },
+      { "name": "presentation-lift", "value": "0 16px 52px rgba(25, 39, 61, 0.10)", "purpose": "Public product and dashboard presentation." }
+    ],
+    "motion": [
+      { "name": "state-change", "value": "180ms cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Selection, reveal, and feedback transitions." }
+    ],
+    "breakpoints": [
+      { "name": "mobile", "value": "720px" },
+      { "name": "tablet", "value": "980px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary action in a working region.",
+      "html": "<button class=\"ds-button-primary\">Save changes</button>",
+      "css": ".ds-button-primary{background:#155eef;color:#fff;border:0;border-radius:10px;padding:12px 18px;font:700 14px Arial,sans-serif;transition:background 180ms cubic-bezier(.16,1,.3,1),transform 180ms cubic-bezier(.16,1,.3,1)}.ds-button-primary:hover{background:#0f49bf}.ds-button-primary:active{transform:translateY(1px)}.ds-button-primary:focus-visible{outline:3px solid #86aafb;outline-offset:3px}"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "A supporting or reversible action.",
+      "html": "<button class=\"ds-button-secondary\">View details</button>",
+      "css": ".ds-button-secondary{background:#fff;color:#111318;border:1px solid #dfe5ed;border-radius:10px;padding:12px 18px;font:700 14px Arial,sans-serif;transition:background 180ms cubic-bezier(.16,1,.3,1),border-color 180ms cubic-bezier(.16,1,.3,1)}.ds-button-secondary:hover{background:#f7f9fc;border-color:#c8d0dc}.ds-button-secondary:focus-visible{outline:3px solid #86aafb;outline-offset:3px}"
+    },
+    {
+      "name": "Text Field",
+      "kind": "input",
+      "refersTo": "input",
+      "description": "A direct, familiar field with an explicit focus state.",
+      "html": "<input class=\"ds-input\" placeholder=\"Search reviews\" />",
+      "css": ".ds-input{background:#fff;color:#111318;border:1px solid #dfe5ed;border-radius:10px;padding:12px 14px;font:400 15px Arial,sans-serif}.ds-input:hover{border-color:#c8d0dc}.ds-input:focus{border-color:#155eef;outline:3px solid #edf4ff}"
+    },
+    {
+      "name": "Status Chip",
+      "kind": "chip",
+      "description": "Compact written state with semantic color.",
+      "html": "<span class=\"ds-status\">Connected</span>",
+      "css": ".ds-status{display:inline-flex;align-items:center;background:#edf4ff;color:#0f49bf;border-radius:999px;padding:6px 9px;font:700 12px Arial,sans-serif}"
+    },
+    {
+      "name": "Working Panel",
+      "kind": "card",
+      "description": "A flat task region on the cool steel canvas.",
+      "html": "<section class=\"ds-panel\"><strong>Review queue</strong><p>Three reviews need a reply.</p></section>",
+      "css": ".ds-panel{background:#fff;color:#111318;border:1px solid #dfe5ed;border-radius:16px;padding:20px;font-family:Arial,sans-serif}.ds-panel strong{display:block;margin-bottom:6px}.ds-panel p{color:#4f5766;margin:0;line-height:1.5}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Signal Ledger",
+    "overview": "Scantap feels like a clear operating record: calm enough to trust, dense enough to run a business, and deliberate about every state. Cobalt signals selection and action. Graphite establishes authority. Cool grays separate working layers without making the product feel cold or technical for its own sake.",
+    "keyCharacteristics": [
+      "Restrained cobalt, graphite, white, and cool gray",
+      "One workhorse sans family with compact product hierarchy",
+      "Clear state labels and low-noise operational density",
+      "Rounded working surfaces with restrained structural depth",
+      "Motion reserved for state change and feedback"
+    ],
+    "rules": [
+      { "name": "The One Signal Rule", "body": "Cobalt identifies something actionable, selected, connected, or focused; it is never scattered as decoration.", "section": "colors" },
+      { "name": "The Honest State Rule", "body": "Success, warning, danger, stale, and disconnected states use their semantic color and a written label together.", "section": "colors" },
+      { "name": "The Task Scale Rule", "body": "Authenticated screens use fixed sizes and tighter ratios; responsive behavior changes layout, not product typography.", "section": "typography" },
+      { "name": "The Flat-First Rule", "body": "A working surface starts flat. It earns elevation through hierarchy, interaction, or overlay behavior.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do make the next task visible within seconds.",
+      "Do combine color, iconography, and copy for important states.",
+      "Do keep organization and location context visible around sensitive actions.",
+      "Do let dense information use familiar tables, lists, and split panes."
+    ],
+    "donts": [
+      "Don't use Signal Blue as ambient decoration.",
+      "Don't hide permission boundaries or provider limitations behind disabled-looking controls.",
+      "Don't turn every object into an equal card.",
+      "Don't use ornamental motion, glass, or gradients inside task workflows."
+    ]
+  }
+}
