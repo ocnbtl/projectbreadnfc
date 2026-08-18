@@ -1,0 +1,11 @@
+[Unit]
+Description=Run the Scantap encrypted backup each night
+
+[Timer]
+OnCalendar=*-*-* 03:15:00 UTC
+RandomizedDelaySec=15m
+Persistent=true
+Unit=scantap-backup.service
+
+[Install]
+WantedBy=timers.target

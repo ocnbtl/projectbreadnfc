@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import "./app/product-app.css";
 import { SiteChrome } from "@/components/site-chrome";
+import { organizationSchemaJson } from "@/lib/organization-schema";
 import { siteUrl } from "@/lib/site-data";
 
 export const metadata: Metadata = {
@@ -44,25 +45,12 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const organization = {
-    "@context": "https://schema.org",
-    "@type": "Organization",
-    name: "Scantap",
-    url: siteUrl,
-    description:
-      "NFC review tools and reputation software for local businesses.",
-    areaServed: {
-      "@type": "AdministrativeArea",
-      name: "Greater Cincinnati",
-    },
-  };
-
   return (
     <html lang="en">
       <body>
         <SiteChrome>{children}</SiteChrome>
         <script
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(organization) }}
+          dangerouslySetInnerHTML={{ __html: organizationSchemaJson }}
           type="application/ld+json"
         />
       </body>

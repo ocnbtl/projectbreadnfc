@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { applicationUrl } from "@/lib/canonical-url";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { authenticatedLandingPath } from "@/lib/control";
 
@@ -15,9 +16,9 @@ export async function GET(request: NextRequest) {
     const { data, error } = await supabase.auth.exchangeCodeForSession(code);
     if (!error && data.user) {
       const landing = await authenticatedLandingPath(supabase, data.user, next);
-      return NextResponse.redirect(new URL(landing, request.url));
+      return NextResponse.redirect(applicationUrl(landing, request));
     }
   }
 
-  return NextResponse.redirect(new URL("/login?reason=confirmation", request.url));
+  return NextResponse.redirect(applicationUrl("/login?reason=confirmation", request));
 }

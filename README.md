@@ -51,6 +51,9 @@ Quality gates:
 ```powershell
 pnpm typecheck
 pnpm lint
+pnpm check:secrets
+pnpm verify:production
+pnpm verify:supabase
 pnpm build
 ```
 
@@ -64,20 +67,33 @@ pnpm record-demo
 
 ## Application configuration
 
-Create a dedicated Supabase project, apply the migration in `supabase/migrations`, and configure the environment names documented in `.env.example`. The Google connection additionally requires an approved Google Business Profile API project, OAuth consent screen, the listed Business Profile APIs, and a base64-encoded 32-byte integration encryption key.
+Scantap's initial backend target is one self-hosted Supabase stack on an Oracle Cloud Always Free A1 VM; the public Next.js application remains on Vercel. Apply every file in `supabase/migrations` in timestamp order and configure the environment names documented in `.env.example`. The complete hybrid storage, tenancy, backup, and scale decision is in [the data architecture](docs/DATA_ARCHITECTURE.md), with provisioning and recovery gates in [the Oracle runbook](docs/operations/ORACLE_SUPABASE_RUNBOOK.md).
 
-After creating the owner in Supabase Auth, promote that exact account from the SQL editor:
+The intended production names are `scantapreviews.com`, `api.scantapreviews.com`, and the reserved `status.scantapreviews.com`; the planned public inbox is `contact@scantapreviews.com`. The domain and mailbox do not exist yet. Keep those values in planned state until the [domain and email cutover](docs/operations/DOMAIN_EMAIL_CUTOVER.md) has real ownership, DNS, TLS, and delivery evidence.
 
-```sql
-insert into public.platform_staff (user_id, role, display_name)
-select id, 'owner', 'Ocean'
-from auth.users
-where lower(email) = lower('replace-with-owner-email@example.com');
+After creating the owner in Supabase Auth, bootstrap that exact account with the dry-run-first script. It requires an HTTPS backend unless the target is localhost and will not create an Auth user:
+
+```powershell
+$env:SCANTAP_OWNER_EMAIL = "replace-with-owner-email@example.com"
+$env:SCANTAP_OWNER_DISPLAY_NAME = "Ocean"
+pnpm bootstrap:owner
+$env:SCANTAP_OWNER_BOOTSTRAP_CONFIRM = "YES"
+pnpm bootstrap:owner -- --apply
 ```
 
-The next normal login routes an active platform staff account to `/control`; customer accounts continue to `/app`. The complete storage, tenancy, backup, and scale decision is in [the data architecture proposal](docs/DATA_ARCHITECTURE.md).
+Provide `NEXT_PUBLIC_SUPABASE_URL` and `SUPABASE_SECRET_KEY` through the trusted shell or deployment secret store, never source control. Clear the temporary bootstrap values after use.
+
+The next normal login routes an active platform staff account to `/control`; customer accounts continue to `/app`.
 
 The scheduled sync endpoint is `GET /api/cron/google-sync`. It requires `Authorization: Bearer <CRON_SECRET>`. Google review content receives a 30-day source expiry and the sync job purges expired cached records.
+
+Read-only deployment verification is available after DNS exists:
+
+```powershell
+$env:SCANTAP_VERIFY_APP_URL = "https://scantapreviews.com"
+$env:SCANTAP_VERIFY_API_URL = "https://api.scantapreviews.com"
+pnpm verify:deployment -- --full
+```
 
 Never expose `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `INTEGRATION_ENCRYPTION_KEY`, `GOOGLE_CLIENT_SECRET`, or `CRON_SECRET` to client code.
 
@@ -96,8 +112,11 @@ Never expose `SUPABASE_SECRET_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `INTEGRATION_EN
 
 ## Honest current limits
 
-- The protected application and migration are implemented locally, but this checkout is not connected to a dedicated Scantap Supabase project.
-- The connected Supabase owner currently has the Free-plan maximum of two active projects. A new Scantap project requires a second free organization, an owner-approved pause of an existing unrelated project, or an upgrade; no existing project was repurposed.
+- The protected application and migrations are implemented, but this checkout is not yet connected to the Scantap production backend.
+- Oracle A1 capacity acquisition is still pending. The autonomous workflow may create only the approved Always Free VM and must stop on paid or ambiguous resources.
+- `scantapreviews.com` has not been purchased; the public origin, API hostname, status hostname, and `contact@scantapreviews.com` are planned contracts rather than live services.
+- Self-hosted Supabase is a single-project, community-supported deployment. Scantap owns its patching, TLS, monitoring, backups, restoration, uptime, and scaling.
+- The first Oracle VM is a single failure domain with no uptime SLA. External customer data remains blocked until HTTPS, SMTP, off-server backups, a restore drill, and live RLS denial tests pass.
 - Google connectivity cannot operate until Google grants Business Profile API access and production OAuth credentials are configured.
 - Link-only integrations open the provider directly; they do not claim review sync or reply APIs.
 - The public `/dashboard` route remains fictional demo data and is separate from `/app`.

@@ -1,19 +1,20 @@
 import { randomUUID } from "node:crypto";
 import { NextResponse, type NextRequest } from "next/server";
+import { applicationUrl } from "@/lib/canonical-url";
 import { createGoogleAuthorizationUrl } from "@/lib/integrations/google-business-profile";
 import { isGoogleIntegrationConfigured } from "@/lib/supabase/config";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 
 export async function GET(request: NextRequest) {
   if (!isGoogleIntegrationConfigured()) {
-    return NextResponse.redirect(new URL("/app/integrations?error=Google+OAuth+is+not+configured.", request.url));
+    return NextResponse.redirect(applicationUrl("/app/integrations?error=Google+OAuth+is+not+configured.", request));
   }
 
   const organizationId = request.nextUrl.searchParams.get("organization");
   const supabase = await createServerSupabaseClient();
   if (!supabase || !organizationId) return new NextResponse("Bad request", { status: 400 });
   const { data: authData } = await supabase.auth.getUser();
-  if (!authData.user) return NextResponse.redirect(new URL("/login?next=/app/integrations", request.url));
+  if (!authData.user) return NextResponse.redirect(applicationUrl("/login?next=/app/integrations", request));
 
   const { data: membership } = await supabase
     .from("organization_memberships")

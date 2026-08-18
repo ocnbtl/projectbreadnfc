@@ -1,0 +1,7 @@
+* text=auto
+
+# Linux and CI operational files must never be checked out with CRLF endings.
+*.sh text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.sql text eol=lf

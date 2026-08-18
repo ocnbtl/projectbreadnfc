@@ -8,6 +8,12 @@
     "start": "next start",
     "lint": "eslint . --max-warnings=0",
     "typecheck": "tsc --noEmit",
+    "check:secrets": "node scripts/check-repository-secrets.mjs",
+    "verify:production": "node scripts/verify-production-contract.mjs",
+    "verify:supabase": "node scripts/verify-supabase-contract.mjs",
+    "verify:deployment": "node scripts/verify-deployment.mjs",
+    "test:rls:live": "node scripts/verify-live-rls.mjs",
+    "bootstrap:owner": "node scripts/bootstrap-platform-owner.mjs",
     "record-demo": "node scripts/record-product-demo.mjs"
   },
   "dependencies": {
@@ -29,5 +35,5 @@
     "playwright": "1.62.0",
     "typescript": "^5.9.0"
   },
-  "packageManager": "pnpm@11.9.0"
+  "packageManager": "pnpm@11.19.0"
 }

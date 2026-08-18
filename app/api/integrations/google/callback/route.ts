@@ -1,4 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
+import { applicationUrl } from "@/lib/canonical-url";
 import { exchangeGoogleAuthorizationCode, listGoogleAccounts, listGoogleLocations } from "@/lib/integrations/google-business-profile";
 import { encryptSecret } from "@/lib/integrations/secret-crypto";
 import { createSupabaseAdminClient } from "@/lib/supabase/admin";
@@ -13,13 +14,13 @@ export async function GET(request: NextRequest) {
   let oauthCookie: OAuthCookie | null = null;
   try { oauthCookie = cookieValue ? JSON.parse(cookieValue) as OAuthCookie : null; } catch { oauthCookie = null; }
   if (!code || !state || !oauthCookie || oauthCookie.state !== state) {
-    return NextResponse.redirect(new URL("/app/integrations?error=Google+connection+verification+failed.", request.url));
+    return NextResponse.redirect(applicationUrl("/app/integrations?error=Google+connection+verification+failed.", request));
   }
 
   const supabase = await createServerSupabaseClient();
-  if (!supabase) return NextResponse.redirect(new URL("/login", request.url));
+  if (!supabase) return NextResponse.redirect(applicationUrl("/login", request));
   const { data: authData } = await supabase.auth.getUser();
-  if (!authData.user) return NextResponse.redirect(new URL("/login?next=/app/integrations", request.url));
+  if (!authData.user) return NextResponse.redirect(applicationUrl("/login?next=/app/integrations", request));
   const { data: membership } = await supabase.from("organization_memberships").select("role").eq("organization_id", oauthCookie.organizationId).eq("user_id", authData.user.id).eq("status", "active").single();
   if (!membership || !["owner", "admin"].includes(membership.role)) return new NextResponse("Administrator access required", { status: 403 });
 
@@ -59,11 +60,11 @@ export async function GET(request: NextRequest) {
       }
     }
 
-    const response = NextResponse.redirect(new URL("/app/integrations?notice=Google+Business+Profile+connected.", request.url));
+    const response = NextResponse.redirect(applicationUrl("/app/integrations?notice=Google+Business+Profile+connected.", request));
     response.cookies.delete("scantap-google-oauth");
     return response;
   } catch (error) {
     const message = error instanceof Error ? error.message : "Google connection failed.";
-    return NextResponse.redirect(new URL(`/app/integrations?error=${encodeURIComponent(message)}`, request.url));
+    return NextResponse.redirect(applicationUrl(`/app/integrations?error=${encodeURIComponent(message)}`, request));
   }
 }

@@ -1,0 +1,9 @@
+{
+  "siteOrigin": "https://scantapreviews.com",
+  "apiOrigin": "https://api.scantapreviews.com",
+  "statusOrigin": "https://status.scantapreviews.com",
+  "contactEmail": "contact@scantapreviews.com",
+  "domainState": "planned-not-purchased",
+  "mailboxState": "planned-not-configured",
+  "statusServiceState": "reserved-not-configured"
+}

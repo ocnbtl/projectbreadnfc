@@ -1,0 +1,17 @@
+[Unit]
+Description=Create and upload an encrypted Scantap Supabase backup
+Documentation=https://github.com/ocnbtl/projectbreadnfc/tree/main/infra/oracle-supabase
+Requires=docker.service
+After=docker.service network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+User=root
+Group=root
+EnvironmentFile=/etc/scantap/backup.env
+UMask=0077
+PrivateTmp=true
+ProtectHome=true
+NoNewPrivileges=true
+ExecStart=/usr/bin/env bash /srv/scantap/repository/infra/oracle-supabase/backup.sh --apply --upload
