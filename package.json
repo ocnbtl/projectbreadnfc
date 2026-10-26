@@ -17,19 +17,19 @@
     "record-demo": "node scripts/record-product-demo.mjs"
   },
   "dependencies": {
-    "@supabase/ssr": "0.12.4",
-    "@supabase/supabase-js": "2.112.0",
+    "@supabase/ssr": "0.12.7",
+    "@supabase/supabase-js": "2.118.0",
     "lucide-react": "^0.468.0",
-    "next": "16.3.8",
-    "react": "^19.2.0",
-    "react-dom": "^19.2.0",
+    "next": "16.4.3",
+    "react": "^19.3.1",
+    "react-dom": "^19.3.1",
     "recharts": "^3.2.1",
-    "zod": "4.4.3"
+    "zod": "4.6.7"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
     "eslint": "^9.0.0",
     "eslint-config-next": "16.3.8",
     "playwright": "1.62.0",
