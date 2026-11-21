@@ -47,6 +47,7 @@ export function SiteFooter() {
       </div>
       <div className="footer-base">
         <span>© {new Date().getFullYear()} Scantap. All rights reserved.</span>
+        <a className="privacy-choices-link" href="/privacy#privacy-choices">Your Privacy Choices</a>
         <span>Tap. Review. Grow.</span>
       </div>
     </footer>

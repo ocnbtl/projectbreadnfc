@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { PrivacyChoicesPanel } from "@/components/privacy-choices";
 
 export const metadata: Metadata = {
   title: "Privacy",
@@ -10,7 +11,8 @@ export default function PrivacyPage() {
   return (
     <article className="legal-page section-shell">
       <h1>Privacy</h1>
-      <p className="legal-updated">Last updated August 5, 2026</p>
+      <p className="legal-updated">Last updated November 20, 2026</p>
+      <PrivacyChoicesPanel />
       <section>
         <h2>Public website</h2>
         <p>

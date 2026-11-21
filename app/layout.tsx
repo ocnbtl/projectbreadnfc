@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import "@/components/privacy-choices.css";
 import "./app/product-app.css";
 import { SiteChrome } from "@/components/site-chrome";
 import { organizationSchemaJson } from "@/lib/organization-schema";
