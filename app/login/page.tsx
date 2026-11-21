@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default async function LoginPage({
   searchParams,
 }: {
-  searchParams: Promise<{ next?: string }>;
+  searchParams: Promise<{ next?: string; reason?: string }>;
 }) {
   const params = await searchParams;
   return (
@@ -30,7 +30,7 @@ export default async function LoginPage({
           <li><Check size={17} /> Monitor Scantap device activity</li>
         </ul>
       </div>
-      <LoginForm configured={isSupabaseConfigured()} next={params.next} />
+      <LoginForm configured={isSupabaseConfigured()} next={params.next} reason={params.reason} />
     </section>
   );
 }

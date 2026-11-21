@@ -5,6 +5,7 @@ import { redirect } from "next/navigation";
 import { z } from "zod";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
 import { authenticatedLandingPath } from "@/lib/control";
+import { loginDestination } from "@/lib/login-destination";
 
 export type LoginState = {
   status: "idle" | "error" | "notice";
@@ -17,10 +18,6 @@ const credentialsSchema = z.object({
   next: z.string().optional(),
   intent: z.enum(["login", "signup"]),
 });
-
-function safeNext(value: string | undefined) {
-  return value?.startsWith("/") && !value.startsWith("//") ? value : undefined;
-}
 
 export async function authenticate(
   _previousState: LoginState,
@@ -39,6 +36,7 @@ export async function authenticate(
     };
   }
 
+  const next = loginDestination(parsed.data.next);
   if (parsed.data.intent === "signup") {
     const headerStore = await headers();
     const origin = headerStore.get("origin") || process.env.NEXT_PUBLIC_SITE_URL;
@@ -47,14 +45,14 @@ export async function authenticate(
       password: parsed.data.password,
       options: {
         emailRedirectTo: origin
-          ? `${origin}/auth/callback${safeNext(parsed.data.next) ? `?next=${encodeURIComponent(safeNext(parsed.data.next)!)}` : ""}`
+          ? `${origin}/auth/callback${next ? `?next=${encodeURIComponent(next)}` : ""}`
           : undefined,
       },
     });
 
     if (error) return { status: "error", message: error.message };
     if (data.session && data.user) {
-      redirect(await authenticatedLandingPath(supabase, data.user, safeNext(parsed.data.next)));
+      redirect(await authenticatedLandingPath(supabase, data.user, next));
     }
 
     return {
@@ -69,5 +67,5 @@ export async function authenticate(
   });
 
   if (error) return { status: "error", message: "That email and password did not match." };
-  redirect(await authenticatedLandingPath(supabase, data.user, safeNext(parsed.data.next)));
+  redirect(await authenticatedLandingPath(supabase, data.user, next));
 }

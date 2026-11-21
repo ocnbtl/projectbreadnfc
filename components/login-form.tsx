@@ -39,9 +39,11 @@ function SubmitActions({ configured }: { configured: boolean }) {
 export function LoginForm({
   configured,
   next = "",
+  reason,
 }: {
   configured: boolean;
   next?: string;
+  reason?: string;
 }) {
   const [state, formAction] = useActionState(authenticate, initialState);
   const setupMessage = configured
@@ -53,6 +55,15 @@ export function LoginForm({
       <input name="next" type="hidden" value={next} />
       <div className="login-form-icon"><LockKeyhole size={23} /></div>
       <h2>Scantap workspace</h2>
+      {reason === "confirmation" && (
+        <p className="login-status notice" role="status">
+          This sign-in link is incomplete, expired, or has already been used.
+          {configured && " If you've already confirmed your account, sign in below. Otherwise, use your latest confirmation email."}
+        </p>
+      )}
+      {reason === "auth-unavailable" && (
+        <p className="login-status notice" role="status">Sign-in is currently unavailable. Please try again later.</p>
+      )}
       <p>{setupMessage}</p>
       <label htmlFor="login-email">Business email</label>
       <input autoComplete="email" id="login-email" name="email" placeholder="you@business.com" required type="email" />
