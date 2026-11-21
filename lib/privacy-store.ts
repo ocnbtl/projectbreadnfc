@@ -1,5 +1,5 @@
 "use client";
-import { isLegacyDecline, isPrivacySignal, parseChoices, privacyKey, type PrivacyChoices, type PrivacyFeature } from "./privacy";
+import { isLegacyDecline, isPrivacySignal, parseChoices, privacyKey, previousPrivacyKey, type PrivacyChoices, type PrivacyFeature } from "./privacy";
 const legacyKeys = ["scantap-consent", "scantap-analytics-consent", "scantap-privacy",
   "analytics-consent", "cookie-consent", "cookieConsent", "cookie_consent"];
 let volatileChoices: PrivacyChoices = {};
@@ -16,13 +16,19 @@ function cookieValue(key: string) {
 
 export function snapshot() {
   let excluded = cookieValue("scantap-internal") === "1" || document.cookie.split(";").some(cookie => /^\s*sb-[^=]+-auth-token(?:\.\d+)?=/.test(cookie));
+  let previous = parseChoices(cookieValue(previousPrivacyKey));
   let choices = parseChoices(cookieValue(privacyKey));
   let legacyDecline = legacyKeys.some((key) => isLegacyDecline(cookieValue(key)));
   try {
+    previous = { ...previous, ...parseChoices(localStorage.getItem(previousPrivacyKey)) };
     choices = { ...choices, ...parseChoices(localStorage.getItem(privacyKey)) };
     legacyDecline ||= legacyKeys.some((key) => isLegacyDecline(localStorage.getItem(key)));
     excluded ||= localStorage.getItem("scantap-internal") === "1" || Object.keys(localStorage).some(key => /^sb-.+-auth-token$/.test(key));
   } catch { excluded = true; /* Unreadable prior preferences or authentication fail closed. */ }
+  // A former shared traffic decline applies to both vendors. A historical allow
+  // never invents separate prior consent for the newly split PostHog category.
+  if (previous.analytics === false && previous.posthog === undefined) previous.posthog = false;
+  choices = { ...previous, ...choices };
   return JSON.stringify({
     choices: { ...choices, ...volatileChoices }, legacyDecline, saveFailed, excluded,
     signal: isPrivacySignal(navigator, (window as Window & { doNotTrack?: string }).doNotTrack),
@@ -42,6 +48,7 @@ export function subscribe(callback: () => void) {
 }
 
 export function save(feature: PrivacyFeature, allowed: boolean) {
+  if (feature === "analytics" && !allowed) try { sessionStorage.removeItem("scantap-google-session:v1"); } catch { /* Collection remains denied. */ }
   const current = JSON.parse(snapshot()) as { choices: PrivacyChoices };
   const choices = { ...current.choices, [feature]: allowed };
   volatileChoices = choices;

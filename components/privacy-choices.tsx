@@ -9,7 +9,7 @@ import { save, snapshot, subscribe, serverSnapshot } from "@/lib/privacy-store";
 import { configuredFeatures } from "@/lib/measurement-config";
 
 const labels: Record<PrivacyFeature, string> = {
-  analytics: "Audience analytics", heatmaps: "Heatmaps", replay: "Masked session replay",
+  analytics: "Google Analytics (GA4)", posthog: "PostHog audience analytics", heatmaps: "PostHog heatmaps", replay: "PostHog masked session replay",
 };
 
 export function PrivacyChoicesPanel() {
@@ -27,7 +27,7 @@ export function PrivacyChoicesPanel() {
     <section id="privacy-choices" className="privacy-choices" aria-labelledby="privacy-choices-heading" tabIndex={-1}>
       <h2 id="privacy-choices-heading">Your Privacy Choices</h2>
       <p>Choose optional measurement for this browser. Changes apply immediately and persist across visits.</p>
-      <p>PostHog measures public visits, selected link clicks, heatmaps and masked replay. GA4 is not active; its separate privacy isolation is still being verified. Collection is limited to the homepage and products page, and each category has its own control.</p>
+      <p>Google Analytics (GA4) and PostHog have separate controls for public visits and selected link clicks. PostHog also provides independently controlled heatmaps and masked replay. Collection is limited to the homepage and products page. Google measurement stays off in browsers without the required isolation.</p>
       <p>Defaults depend on the visitor’s region. Where prior choice is required, optional measurement waits for your permission. Unknown locations remain off, including with saved preferences. Replay preserves reviewed public content while masking inputs, private or dynamic text, and unrecognized attributes.</p>
       {(context.blocked || state.excluded) && <p role="status">Optional measurement is excluded for this browser or visitor context.</p>}
       {!policyReady && <p role="status">Checking the visitor privacy policy. Optional measurement remains off until the check succeeds.</p>}

@@ -15,14 +15,15 @@
     "test:rls:live": "node scripts/verify-live-rls.mjs",
     "bootstrap:owner": "node scripts/bootstrap-platform-owner.mjs",
     "record-demo": "node scripts/record-product-demo.mjs",
-    "verify:measurement": "node scripts/verify-measurement.mjs"
+    "verify:measurement": "node scripts/verify-measurement.mjs",
+    "verify:google": "node scripts/verify-google-measurement.mjs"
   },
   "dependencies": {
     "@supabase/ssr": "0.12.4",
     "@supabase/supabase-js": "2.112.0",
     "lucide-react": "^0.468.0",
     "next": "16.3.8",
-    "posthog-js": "1.453.2",
+    "posthog-js": "1.453.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "recharts": "^3.2.1",

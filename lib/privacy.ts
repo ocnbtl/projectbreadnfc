@@ -1,5 +1,6 @@
-export const privacyKey = "scantap-privacy-choices:v1";
-export const privacyFeatures = ["analytics", "heatmaps", "replay"] as const;
+export const privacyKey = "scantap-privacy-choices:v2";
+export const previousPrivacyKey = "scantap-privacy-choices:v1";
+export const privacyFeatures = ["analytics", "posthog", "heatmaps", "replay"] as const;
 export type PrivacyFeature = (typeof privacyFeatures)[number];
 export type PrivacyChoices = Partial<Record<PrivacyFeature, boolean>>;
 

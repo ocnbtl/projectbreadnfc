@@ -3,7 +3,8 @@ export const posthogToken = /^phc_[A-Za-z0-9]+$/.test(process.env.NEXT_PUBLIC_PO
 export const posthogHost = process.env.NEXT_PUBLIC_POSTHOG_REGION === "eu" ? "https://eu.i.posthog.com" : "https://us.i.posthog.com";
 export const measurementVerified = process.env.NEXT_PUBLIC_MEASUREMENT_VERIFIED === "true";
 export const configuredFeatures = {
-  analytics: Boolean(posthogToken) && measurementVerified,
+  analytics: Boolean(gaId) && measurementVerified,
+  posthog: Boolean(posthogToken) && measurementVerified,
   heatmaps: Boolean(posthogToken) && measurementVerified,
   replay: Boolean(posthogToken) && measurementVerified,
 };

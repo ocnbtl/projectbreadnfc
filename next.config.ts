@@ -1,20 +1,23 @@
 import type { NextConfig } from "next";
 
 const isDevelopment = process.env.NODE_ENV === "development";
+const deployment = process.env.VERCEL_URL ?? "";
+const frameOrigin = process.env.VERCEL === "1" && /^projectbreadnfc-[a-z0-9]+-unigentamos\.vercel\.app$/.test(deployment)
+  ? "https://" + deployment : isDevelopment ? "http://localhost:3168" : "";
 const publicContentSecurityPolicy = [
   "default-src 'self'",
-  `script-src 'self' 'unsafe-inline' https://us-assets.i.posthog.com https://eu-assets.i.posthog.com${isDevelopment ? " 'unsafe-eval'" : ""}`,
+  `script-src 'self' 'unsafe-inline'${isDevelopment ? " 'unsafe-eval'" : ""}`,
   "style-src 'self' 'unsafe-inline'",
   "img-src 'self' blob: data:",
   "font-src 'self' data:",
-  "connect-src 'self' https://api.scantapreviews.com https://us.i.posthog.com https://eu.i.posthog.com https://us-assets.i.posthog.com https://eu-assets.i.posthog.com",
+  "connect-src 'self' https://api.scantapreviews.com https://us.i.posthog.com https://eu.i.posthog.com https://us-assets.i.posthog.com https://eu-assets.i.posthog.com https://www.google-analytics.com",
   "media-src 'self' blob:",
   "worker-src 'self' blob:",
   "object-src 'none'",
   "base-uri 'self'",
   "form-action 'self'",
   "frame-ancestors 'none'",
-  "frame-src 'none'",
+  `frame-src ${frameOrigin ? frameOrigin + "/measurement/google.html" : "'none'"}`,
   "manifest-src 'self'",
   ...(isDevelopment ? [] : ["upgrade-insecure-requests"]),
 ].join("; ");
@@ -26,7 +29,7 @@ const nextConfig: NextConfig = {
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: "/:path((?!measurement/google\\.html$).*)",
         headers: [
           { key: "Content-Security-Policy", value: publicContentSecurityPolicy },
           { key: "X-Content-Type-Options", value: "nosniff" },

@@ -14,6 +14,22 @@ export default function PrivacyPage() {
       <p className="legal-updated">Last updated November 20, 2026</p>
       <PrivacyChoicesPanel />
       <section>
+        <h2>Optional website measurement</h2>
+        <p>
+          Measurement uses public page paths, selected link categories, short-lived reporting
+          identifiers, and the heatmap or masked replay data you allow. Providers also receive
+          normal connection information, such as IP address and browser type. Account details,
+          form inputs, private page content, page-address queries, and referrers are excluded
+          from our measurement payloads. PostHog is configured to use US hosting.
+        </p>
+        <p>
+          Your choices apply to this browser. Read the{" "}
+          <a href="https://policies.google.com/privacy" rel="noreferrer">Google privacy policy</a>{" "}
+          and <a href="https://posthog.com/privacy" rel="noreferrer">PostHog privacy policy</a>{" "}
+          for the providers’ own data-handling details.
+        </p>
+      </section>
+      <section>
         <h2>Public website</h2>
         <p>
           The pilot planner runs in your browser and does not submit its answers to Scantap.
