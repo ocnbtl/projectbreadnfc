@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { Measurement } from "./measurement";
 import { SiteFooter } from "./site-footer";
 import { SiteHeader } from "./site-header";
 
@@ -13,6 +14,7 @@ export function SiteChrome({ children }: { children: React.ReactNode }) {
 
   return (
     <>
+      <Measurement />
       <a className="skip-link" href="#main-content">
         Skip to content
       </a>

@@ -2,10 +2,6 @@ export const privacyKey = "scantap-privacy-choices:v1";
 export const privacyFeatures = ["analytics", "heatmaps", "replay"] as const;
 export type PrivacyFeature = (typeof privacyFeatures)[number];
 export type PrivacyChoices = Partial<Record<PrivacyFeature, boolean>>;
-// No destination is configured in this project. Never imply a vendor is running.
-export const configuredFeatures: Record<PrivacyFeature, boolean> = {
-  analytics: false, heatmaps: false, replay: false,
-};
 
 export function parseChoices(value: string | null): PrivacyChoices {
   try {
@@ -47,15 +43,18 @@ export type CollectionPolicy = {
   configured: boolean;
   maskingVerified: boolean;
   jurisdiction: "default-on-permitted" | "prior-consent" | "unknown";
+  replayRequiresConsent?: boolean;
+  blocked?: boolean;
 };
 
 // Every future collector must call this before loading and before each send.
 // A verified implementation and regional policy are required even after opt-in.
 export function collectionAllowed(feature: PrivacyFeature, policy: CollectionPolicy): boolean {
-  if (!policy.configured || !policy.maskingVerified || policy.signal) return false;
+  if (!policy.configured || !policy.maskingVerified || policy.signal || policy.blocked || policy.jurisdiction === "unknown") return false;
   if (policy.pathname !== "/" && policy.pathname !== "/products") return false;
   if (policy.choices[feature] === false) return false;
   if (policy.choices[feature] === true) return true;
   if (policy.legacyDecline) return false;
+  if (feature === "replay" && policy.replayRequiresConsent) return false;
   return policy.jurisdiction === "default-on-permitted";
 }

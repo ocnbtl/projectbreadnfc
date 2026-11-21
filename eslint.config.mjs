@@ -11,5 +11,8 @@ export default defineConfig([
     "build/**",
     "next-env.d.ts",
     "prototype/**",
+    ".qa/**",
+    ".pnpm-store/**",
+    "output/**",
   ]),
 ]);
